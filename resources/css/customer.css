@@ -1,0 +1,29 @@
+@import './customer/base.css';
+@import './customer/header.css';
+@import './customer/footer.css';
+@import './customer/mobile.css';
+@import './customer/home.css';
+@import './customer/account.css';
+@import './customer/promo.css';
+@import './customer/order-history.css';
+@import './customer/home-mobile.css';
+@import './customer/promo-mobile.css';
+@import './customer/account-mobile.css';
+
+
+/* =========================================================
+   GLOBAL CUSTOMER - DESKTOP VIEWPORT
+   ========================================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}

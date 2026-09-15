@@ -1,0 +1,179 @@
+/* =========================================================
+   SANG PENCUCI
+   CUSTOMER - HEADER DESKTOP
+========================================================= */
+
+.customer-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.96);
+    border-bottom: 1px solid var(--sp-border);
+    backdrop-filter: blur(12px);
+}
+
+
+/* =========================================================
+   HEADER INNER
+========================================================= */
+
+.customer-header-inner {
+    width: min(1380px, calc(100% - 80px));
+
+    min-height: 88px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.customer-logo-link {
+    display: flex;
+    align-items: center;
+
+    flex-shrink: 0;
+}
+
+.customer-logo {
+    width: 100px;
+    height: auto;
+
+    display: block;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   DESKTOP NAVIGATION
+========================================================= */
+
+.customer-desktop-nav {
+    display: flex;
+    align-items: center;
+
+    gap: 34px;
+
+    margin-left: 62px;
+}
+
+.customer-desktop-nav a {
+    position: relative;
+
+    padding: 7px 0;
+
+    color: var(--sp-text);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    transition:
+        color 0.2s ease;
+}
+
+.customer-desktop-nav a:hover {
+    color: var(--sp-blue);
+}
+
+
+/* MENU AKTIF */
+
+.customer-desktop-nav a.active {
+    color: var(--sp-blue);
+}
+
+.customer-desktop-nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: var(--sp-blue);
+}
+
+
+/* =========================================================
+   HEADER ACTION
+========================================================= */
+
+.customer-header-action {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================================
+   BUTTON MASUK - GUEST
+========================================================= */
+
+.customer-login-button {
+    min-width: 94px;
+    height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: var(--sp-blue-dark);
+    color: var(--sp-white);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.customer-login-button:hover {
+    background: var(--sp-blue);
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 6px 16px rgba(23, 75, 122, 0.15);
+}
+
+
+/* =========================================================
+   MOBILE ACCOUNT
+   Untuk sementara disembunyikan di desktop.
+   Akan diatur di mobile.css.
+========================================================= */
+
+.customer-mobile-account {
+    display: none;
+}
+
+
+/* =========================================================
+   HAMBURGER
+   Untuk sementara disembunyikan di desktop.
+   Akan diatur di mobile.css.
+========================================================= */
+
+.customer-hamburger {
+    display: none;
+}

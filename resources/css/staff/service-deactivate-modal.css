@@ -1,0 +1,52 @@
+/* ==========================================================
+   MODAL NONAKTIFKAN LAYANAN
+   ========================================================== */
+
+.service-deactivate-modal {
+    display: none;
+}
+
+.service-deactivate-modal.show {
+    display: flex;
+}
+
+
+/* ==========================================================
+   CONTAINER
+   ========================================================== */
+
+.service-deactivate-container {
+    width: 100%;
+    max-width: 520px;
+}
+
+
+/* ==========================================================
+   NAMA LAYANAN
+   ========================================================== */
+
+#deactivateServiceName {
+    font-weight: 700;
+    color: #102a72;
+}
+
+
+/* ==========================================================
+   TOMBOL NONAKTIFKAN
+   ========================================================== */
+
+.btn-deactivate-service {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    background: #1769d1;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-deactivate-service:hover {
+    background: #1258b1;
+}

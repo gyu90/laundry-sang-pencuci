@@ -1,0 +1,942 @@
+/* ==========================================
+   HISTORY PAGE
+   ========================================== */
+
+.history-page {
+    padding: 28px 22px 40px;
+}
+
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+.history-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+.history-header h1 {
+    margin: 0;
+
+    font-size: 28px;
+    line-height: 1.2;
+
+    font-weight: 700;
+
+    color: #102a72;
+}
+
+.history-header p {
+    margin: 7px 0 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #667b9e;
+}
+
+
+/* ==========================================
+   KEMBALI KE PESANAN
+   ========================================== */
+
+.back-button {
+    min-height: 40px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 15px;
+
+    border: 1px solid #d9e4f2;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #29456f;
+
+    text-decoration: none;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.back-button:hover {
+    background: #f5f9ff;
+
+    border-color: #b7cae4;
+
+    color: #1456b8;
+
+    box-shadow:
+        0 3px 8px rgba(40, 75, 120, 0.06);
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+/* ==========================================
+   FILTER RIWAYAT
+   ========================================== */
+
+.history-filter {
+    width: 100%;
+
+    padding: 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e9f4;
+    border-radius: 14px;
+
+    box-sizing: border-box;
+
+    margin-bottom: 24px;
+
+    box-shadow: 0 4px 14px rgba(40, 75, 120, 0.04);
+}
+
+/* ==========================================
+   HISTORY MONTH CARD
+   ========================================== */
+
+.history-month-card {
+    width: 100%;
+
+    margin-bottom: 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e9f4;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 14px rgba(40, 75, 120, 0.04);
+}
+
+
+/* ==========================================
+   HEADER BULAN
+   ========================================== */
+
+.history-month-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 20px;
+
+    background: #f8fbff;
+
+    border-bottom: 1px solid #e7eef7;
+}
+
+.history-month-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.history-month-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 42px;
+
+    border-radius: 12px;
+
+    background: #e8f2ff;
+}
+
+.history-month-icon img {
+    width: 21px;
+    height: 21px;
+
+    display: block;
+
+    object-fit: contain;
+}
+
+.history-month-title h2 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #102a72;
+}
+
+.history-month-title p {
+    margin: 4px 0 0;
+
+    font-size: 12px;
+
+    color: #7185a5;
+}
+
+
+/* ==========================================
+   TOTAL BULAN
+   ========================================== */
+
+.history-month-total {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap: 3px;
+}
+
+.history-month-total span {
+    font-size: 11px;
+
+    color: #7185a5;
+}
+
+.history-month-total strong {
+    font-size: 14px;
+
+    color: #1769d1;
+}
+
+
+/* ==========================================
+   TABLE WRAPPER
+   ========================================== */
+
+.history-orders-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+/* ==========================================
+   BARIS RIWAYAT
+   ========================================== */
+
+.history-order {
+    min-width: 1100px;
+
+    display: grid;
+
+    grid-template-columns:
+        45px
+        135px
+        155px
+        minmax(220px, 1fr)
+        110px
+        100px
+        145px
+        100px;
+
+    align-items: center;
+
+    column-gap: 10px;
+
+    padding: 15px 20px;
+
+    box-sizing: border-box;
+
+    font-size: 12px;
+
+    color: #3f577d;
+
+    border-bottom: 1px solid #edf2f8;
+}
+
+.history-order:last-child {
+    border-bottom: none;
+}
+
+
+/* HEADER */
+
+.history-order-header {
+    min-height: 44px;
+
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    background: #ffffff;
+
+    color: #607493;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================
+   NOMOR ORDER
+   ========================================== */
+
+.history-order-number {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.history-order-number strong {
+    color: #102a72;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.history-order-number span {
+    font-size: 11px;
+
+    color: #6d82a6;
+}
+
+.history-order-number small {
+    font-size: 10px;
+
+    color: #91a1ba;
+}
+
+
+/* ==========================================
+   CUSTOMER
+   ========================================== */
+
+.history-order-customer {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.history-order-customer strong {
+    color: #29456f;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.history-order-customer span {
+    font-size: 10px;
+
+    color: #7488a7;
+}
+
+
+/* ==========================================
+   LAYANAN
+   ========================================== */
+
+.history-order-service {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.history-service-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #526b91;
+
+    line-height: 1.4;
+}
+
+.history-service-dot {
+    width: 5px;
+    height: 5px;
+
+    flex: 0 0 5px;
+
+    border-radius: 50%;
+
+    background: #4b8fe8;
+}
+
+
+/* ==========================================
+   NOMINAL
+   ========================================== */
+
+.history-order-total,
+.history-order-discount,
+.history-order-final {
+    white-space: nowrap;
+}
+
+.history-order-total {
+    color: #3f577d;
+}
+
+.history-order-discount {
+    color: #7c8ca6;
+}
+
+.history-order-final {
+    color: #102a72;
+
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   STATUS
+   ========================================== */
+
+.history-status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 29px;
+
+    padding: 5px 10px;
+
+    border-radius: 8px;
+
+    background: #eaf8f0;
+
+    color: #16834b;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+/* ==========================================
+   SEARCH
+   ========================================== */
+
+.search-wrapper {
+    position: relative;
+    width: 100%;
+
+    margin-bottom: 18px;
+}
+
+.search-wrapper input {
+    width: 100%;
+    height: 44px;
+
+    box-sizing: border-box;
+
+    padding: 0 14px 0 42px;
+
+    border: 1px solid #d9e4f2;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #243b66;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-wrapper input::placeholder {
+    color: #94a5c3;
+}
+
+.search-wrapper input:focus {
+    border-color: #4b8fe8;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.10);
+}
+
+
+/* ICON SEARCH */
+
+.search-icon {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    width: 18px;
+    height: 18px;
+
+    transform: translateY(-50%);
+
+    display: block;
+
+    object-fit: contain;
+
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   BARIS FILTER
+   ========================================== */
+
+.filter-row {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr
+        1fr
+        auto;
+
+    align-items: end;
+
+    gap: 12px;
+}
+
+/* ==========================================
+   FILTER GROUP
+   ========================================== */
+
+.filter-group {
+    min-width: 0;
+}
+
+.filter-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #52688f;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    height: 42px;
+
+    box-sizing: border-box;
+
+    padding: 0 12px;
+
+    border: 1px solid #d9e4f2;
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #243b66;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: #4b8fe8;
+
+    box-shadow:
+        0 0 0 3px rgba(59, 130, 246, 0.10);
+}
+
+
+/* ==========================================
+   TOMBOL FILTER
+   ========================================== */
+
+.filter-actions {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.filter-button,
+.reset-button {
+    height: 42px;
+
+    padding: 0 17px;
+
+    border-radius: 9px;
+
+    box-sizing: border-box;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* CARI */
+
+.filter-button {
+    border: none;
+
+    background: #1769d1;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 4px 10px rgba(23, 105, 209, 0.14);
+}
+
+.filter-button:hover {
+    background: #1259b5;
+}
+
+
+/* RESET */
+
+.reset-button {
+    border: 1px solid #d9e4f2;
+
+    background: #ffffff;
+
+    color: #3d587f;
+}
+
+.reset-button:hover {
+    background: #f5f9ff;
+
+    border-color: #b7cae4;
+
+    color: #1456b8;
+}
+
+.history-orders {
+    width: 100%;
+}
+
+.history-order {
+    display: grid;
+    grid-template-columns:
+        130px
+        170px
+        minmax(200px, 1fr)
+        120px
+        110px
+        150px
+        90px;
+
+    align-items: center;
+    column-gap: 20px;
+
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f0;
+
+    font-size: 14px;
+}
+
+.history-order-header {
+    padding: 12px 0;
+
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.history-order-header > div {
+    white-space: nowrap;
+}
+
+.order-number {
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+}
+
+.order-customer {
+    color: #374151;
+}
+
+.order-service {
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.order-total,
+.order-discount,
+.order-final-total {
+    white-space: nowrap;
+}
+
+.order-total {
+    color: #374151;
+}
+
+.order-discount {
+    color: #6b7280;
+}
+
+.order-final-total {
+    font-weight: 700;
+    color: #111827;
+}
+
+.order-status {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    white-space: nowrap;
+}
+/* =========================
+   EMPTY
+========================= */
+
+.empty-history {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.empty-history h3 {
+    margin: 0 0 6px;
+}
+
+.empty-history p {
+    margin: 0;
+    color: #6b7280;
+}
+
+/* =========================================================
+   FIX FINAL - HISTORY TABLE
+   Harus diletakkan paling bawah history.css
+   ========================================================= */
+
+.history-orders-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.history-order {
+    width: 100%;
+    min-width: 1100px;
+
+    display: grid !important;
+
+    grid-template-columns:
+        45px
+        135px
+        155px
+        minmax(220px, 1fr)
+        110px
+        100px
+        145px
+        100px !important;
+
+    align-items: center;
+
+    column-gap: 10px;
+
+    padding: 15px 20px;
+
+    box-sizing: border-box;
+
+    font-size: 12px;
+}
+
+.history-order-header {
+    display: grid !important;
+
+    grid-template-columns:
+        45px
+        135px
+        155px
+        minmax(220px, 1fr)
+        110px
+        100px
+        145px
+        100px !important;
+
+    align-items: center;
+
+    min-width: 1100px;
+}
+
+.history-order-header > div {
+    white-space: nowrap;
+}
+
+.history-order > div {
+    min-width: 0;
+}
+
+/* ==========================================
+   PAGINATION RIWAYAT
+   ========================================== */
+
+.history-month-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 14px 20px;
+
+    border-top: 1px solid #edf2f8;
+    background: #ffffff;
+}
+
+.history-pagination-info {
+    font-size: 12px;
+    color: #7185a5;
+}
+
+.history-pagination {
+    display: flex;
+    align-items: center;
+}
+
+
+/* WRAPPER PAGINATION LARAVEL */
+
+.history-pagination nav {
+    display: flex;
+    align-items: center;
+}
+
+.history-pagination nav > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.history-pagination a,
+.history-pagination span {
+    min-width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 9px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d9e4f2;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #486486;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+
+/* HOVER */
+
+.history-pagination a:hover {
+    background: #f3f8ff;
+    border-color: #a9c9ef;
+    color: #1456b8;
+}
+
+
+/* HALAMAN AKTIF */
+
+.history-pagination span[aria-current="page"] {
+    border-color: #1769d1;
+    background: #1769d1;
+    color: #ffffff;
+}
+
+
+/* PREVIOUS / NEXT */
+
+.history-pagination a[rel="prev"],
+.history-pagination a[rel="next"],
+.history-pagination span[aria-disabled="true"] {
+    min-width: 34px;
+    padding: 0 10px;
+}
+
+
+/* DISABLED */
+
+.history-pagination span[aria-disabled="true"] {
+    background: #f8fafc;
+    border-color: #e5ebf3;
+    color: #b0bccd;
+    cursor: default;
+}

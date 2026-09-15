@@ -1,0 +1,503 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f8fa;
+    color: #1f1f1f;
+}
+
+/* =========================
+   LAYOUT OWNER
+========================= */
+
+.owner-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 240px;
+    background: #dceeff;
+    color: #1e3a5f;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-right: 1px solid #c7e0f7;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 5px;
+}
+
+.sidebar-logo h2 {
+    margin: 0;
+    font-size: 17px;
+    color: #1e3a5f;
+}
+
+.sidebar-logo span {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #5d7894;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.sidebar-menu {
+    padding: 20px 12px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 15px;
+    margin-bottom: 6px;
+    color: #42627f;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    background: #c9e3f9;
+    color: #1e4f78;
+}
+
+.menu-item.active {
+    background: #ffffff;
+    color: #111111;
+}
+
+.menu-icon {
+    width: 22px;
+    text-align: center;
+    font-size: 15px;
+    color: #4d7191;
+}
+
+.menu-item.active .menu-icon {
+    color: #174a73;
+}
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 15px;
+}
+
+.logout-button {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: #42627f;
+    padding: 12px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.logout-button:hover {
+    background: #c9e3f9;
+    color: #1e4f78;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    padding: 28px 32px;
+}
+
+/* =========================
+   TOPBAR OWNER
+========================= */
+
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    min-height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding: 0 28px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+
+    margin-bottom: 28px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.staff-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.staff-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f5f9;
+    color: #334155;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.staff-info strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.staff-info span {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+.sidebar {
+    width: 250px;
+}
+
+    .main-content {
+        margin-left: 200px;
+        width: calc(100% - 200px);
+        padding: 22px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+        padding: 18px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+    }
+}
+
+/* =====================================================
+   OWNER DASHBOARD
+===================================================== */
+
+.owner-summary {
+    display: grid;
+    grid-template-columns: 1.35fr repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.owner-income-card,
+.owner-stat-card {
+    min-height: 94px;
+    border-radius: 10px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.owner-income-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+}
+
+.owner-income-card span,
+.owner-stat-card span {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.owner-income-card strong {
+    font-size: 25px;
+    color: #111827;
+}
+
+.owner-stat-card strong {
+    font-size: 23px;
+}
+
+
+/* STATUS CARD */
+
+.owner-stat-card.waiting {
+    background: #fce2ad;
+    color: #93610d;
+}
+
+.owner-stat-card.process {
+    background: #c9ddf7;
+    color: #2864a0;
+}
+
+.owner-stat-card.delivery {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #111827;
+}
+
+.owner-stat-card.pickup {
+    background: #c9eac9;
+    color: #16803a;
+}
+
+
+/* =====================================================
+   DASHBOARD CARD
+===================================================== */
+
+.owner-dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 22px;
+}
+
+.owner-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.owner-card-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #111827;
+}
+
+.owner-card-header a {
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.owner-card-header a:hover {
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.owner-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.owner-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.owner-table-wrapper th {
+    padding: 12px 6px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.owner-table-wrapper td {
+    padding: 13px 6px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.owner-table-wrapper th:last-child,
+.owner-table-wrapper td:last-child {
+    text-align: right;
+}
+
+.owner-amount {
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   STATUS BADGE
+===================================================== */
+
+.owner-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.owner-status.waiting {
+    background: #fce2ad;
+    color: #93610d;
+}
+
+.owner-status.process {
+    background: #c9ddf7;
+    color: #2864a0;
+}
+
+.owner-status.delivery {
+    background: #e5e7eb;
+    color: #374151;
+}
+
+.owner-status.pickup {
+    background: #c9eac9;
+    color: #16803a;
+}
+
+.owner-status.completed {
+    background: #eeeeee;
+    color: #555555;
+}
+
+
+/* =====================================================
+   VIEW ORDERS
+===================================================== */
+
+.owner-view-orders {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-top: 16px;
+    border: 1px solid #dfe3e8;
+    border-radius: 7px;
+    color: #111827;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.owner-view-orders:hover {
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.owner-category-item {
+    margin-bottom: 18px;
+}
+
+.owner-category-item:last-child {
+    margin-bottom: 0;
+}
+
+.owner-category-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.owner-category-label strong {
+    font-size: 13px;
+    color: #334155;
+}
+
+.owner-progress {
+    width: 100%;
+    height: 7px;
+    background: #eeeeee;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.owner-progress-bar {
+    height: 100%;
+    background: #3478d4;
+    border-radius: 999px;
+}
+
+.empty-order,
+.empty-category {
+    text-align: center;
+    color: #6b7280;
+    padding: 25px;
+}

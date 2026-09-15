@@ -1,0 +1,52 @@
+/* ==========================================================
+   MODAL AKTIFKAN KEMBALI LAYANAN
+   ========================================================== */
+
+.service-reactivate-modal {
+    display: none;
+}
+
+.service-reactivate-modal.show {
+    display: flex;
+}
+
+
+/* ==========================================================
+   CONTAINER
+   ========================================================== */
+
+.service-reactivate-container {
+    width: 100%;
+    max-width: 520px;
+}
+
+
+/* ==========================================================
+   NAMA LAYANAN
+   ========================================================== */
+
+#reactivateServiceName {
+    font-weight: 700;
+    color: #102a72;
+}
+
+
+/* ==========================================================
+   TOMBOL AKTIFKAN
+   ========================================================== */
+
+.btn-reactivate-service {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    background: #1769d1;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-reactivate-service:hover {
+    background: #1258b1;
+}

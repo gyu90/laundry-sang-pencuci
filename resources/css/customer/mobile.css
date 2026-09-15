@@ -1,0 +1,447 @@
+/* =========================================================
+   SANG PENCUCI
+   CUSTOMER - MOBILE GLOBAL
+   ========================================================= */
+
+
+/* =========================================================
+   DEFAULT
+   Mobile menu disembunyikan pada desktop
+   ========================================================= */
+
+.customer-mobile-menu {
+    display: none;
+}
+
+.customer-menu-overlay {
+    display: none;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================================
+       HEADER MOBILE
+       ===================================================== */
+
+    .customer-header-inner {
+        width: 100%;
+
+        min-height: 68px;
+
+        padding: 8px 16px;
+
+        display: flex;
+        align-items: center;
+    }
+
+
+    /* =====================================================
+       HAMBURGER
+       ===================================================== */
+
+    .customer-hamburger {
+        width: 36px;
+        height: 36px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 4px;
+
+        margin-right: 6px;
+
+        padding: 6px;
+
+        border: none;
+        border-radius: 9px;
+
+        background: transparent;
+    }
+
+    .customer-hamburger span {
+        display: block;
+
+        width: 100%;
+        height: 2px;
+
+        border-radius: 999px;
+
+        background: var(--sp-blue-dark);
+    }
+
+
+    /* =====================================================
+       LOGO MOBILE
+       ===================================================== */
+
+    .customer-logo {
+        width: 88px;
+        height: auto;
+
+        display: block;
+
+        flex-shrink: 0;
+
+        object-fit: contain;
+    }
+
+
+    /* =====================================================
+       NAV DESKTOP DISEMBUNYIKAN
+       ===================================================== */
+
+    .customer-desktop-nav {
+        display: none;
+    }
+
+
+    /* =====================================================
+       AREA KANAN
+       ===================================================== */
+
+    .customer-header-action {
+        margin-left: auto;
+
+        display: flex;
+        align-items: center;
+
+        gap: 8px;
+
+        flex-shrink: 0;
+    }
+
+
+    /* =====================================================
+       TOMBOL MASUK
+       ===================================================== */
+
+    .customer-login-button {
+        min-width: 72px;
+        height: 34px;
+
+        padding: 0 14px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 999px;
+
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+
+    /* =====================================================
+       IKON AKUN
+       ===================================================== */
+
+    .customer-mobile-account {
+        width: 34px;
+        height: 34px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: var(--sp-blue-soft);
+        color: var(--sp-blue-dark);
+
+        font-size: 15px;
+    }
+
+
+    /* =====================================================
+       OVERLAY
+       ===================================================== */
+
+    .customer-menu-overlay {
+        display: block;
+
+        position: fixed;
+        inset: 0;
+
+        z-index: 1998;
+
+        background:
+            rgba(18, 45, 70, 0.35);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition:
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+    .customer-menu-overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    /* =====================================================
+       DRAWER
+       ===================================================== */
+
+    .customer-mobile-menu {
+        display: flex;
+
+        position: fixed;
+
+        top: 0;
+        left: 0;
+        bottom: 0;
+
+        z-index: 1999;
+
+        width: min(315px, 84vw);
+
+        flex-direction: column;
+
+        background: var(--sp-white);
+
+        box-shadow:
+            12px 0 35px rgba(20, 66, 100, 0.15);
+
+        transform: translateX(-100%);
+
+        transition:
+            transform 0.28s ease;
+    }
+
+    .customer-mobile-menu.show {
+        transform: translateX(0);
+    }
+
+
+    /* =====================================================
+       DRAWER HEADER
+       ===================================================== */
+
+    .customer-mobile-menu-header {
+        min-height: 82px;
+
+        padding: 14px 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        border-bottom:
+            1px solid var(--sp-border);
+    }
+
+
+    .customer-mobile-brand {
+        display: flex;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+    .customer-mobile-brand img {
+        width: 44px;
+        height: 44px;
+
+        object-fit: contain;
+    }
+
+    .customer-mobile-brand strong {
+        display: block;
+
+        color: var(--sp-blue-dark);
+
+        font-size: 14px;
+    }
+
+    .customer-mobile-brand span {
+        display: block;
+
+        margin-top: 2px;
+
+        color: var(--sp-text-soft);
+
+        font-size: 11px;
+    }
+
+
+    /* =====================================================
+       CLOSE
+       ===================================================== */
+
+    .customer-menu-close {
+        width: 36px;
+        height: 36px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: none;
+        border-radius: 10px;
+
+        background: var(--sp-blue-soft);
+        color: var(--sp-blue-dark);
+
+        font-size: 23px;
+        line-height: 1;
+    }
+
+
+    /* =====================================================
+       DRAWER NAVIGATION
+       ===================================================== */
+
+    .customer-mobile-nav {
+        padding: 18px 14px;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 6px;
+    }
+
+    .customer-mobile-nav a {
+        min-height: 46px;
+
+        display: flex;
+        align-items: center;
+
+        padding: 0 14px;
+
+        border-radius: 11px;
+
+        color: var(--sp-text);
+
+        font-size: 14px;
+        font-weight: 600;
+
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+    }
+
+    .customer-mobile-nav a:hover,
+    .customer-mobile-nav a.active {
+        background: var(--sp-blue-soft);
+
+        color: var(--sp-blue-dark);
+    }
+
+    .mobile-menu-icon {
+        width: 25px;
+
+        margin-right: 10px;
+
+        display: inline-flex;
+        justify-content: center;
+
+        color: var(--sp-blue);
+
+        font-size: 17px;
+    }
+
+
+    /* =====================================================
+       DRAWER BOTTOM
+       ===================================================== */
+
+    .customer-mobile-menu-bottom {
+        margin-top: auto;
+
+        padding: 15px;
+
+        border-top:
+            1px solid var(--sp-border);
+    }
+
+    .customer-mobile-menu-tagline {
+        color: var(--sp-text-soft);
+
+        font-size: 11px;
+
+        text-align: center;
+
+        line-height: 1.5;
+    }
+
+    .customer-mobile-menu-bottom form {
+        width: 100%;
+    }
+
+    .customer-mobile-logout {
+        width: 100%;
+
+        min-height: 44px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        gap: 8px;
+
+        border: none;
+        border-radius: 10px;
+
+        background: var(--sp-pink-soft);
+        color: var(--sp-pink);
+
+        font-size: 13px;
+        font-weight: 700;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+    .customer-header-inner {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .customer-hamburger {
+        width: 34px;
+        height: 34px;
+
+        margin-right: 5px;
+
+        padding: 6px;
+    }
+
+
+    .customer-logo {
+        width: 82px;
+    }
+
+
+    .customer-login-button {
+        min-width: 68px;
+        height: 33px;
+
+        padding: 0 12px;
+
+        font-size: 10px;
+    }
+
+
+    .customer-mobile-account {
+        width: 32px;
+        height: 32px;
+    }
+}

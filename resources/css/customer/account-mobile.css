@@ -1,0 +1,550 @@
+/* =========================================================
+   SANG PENCUCI
+   CUSTOMER - ACCOUNT MOBILE
+========================================================= */
+
+
+/* =========================================================
+   TABLET / MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .account-page {
+        padding: 32px 0 70px;
+    }
+
+    .account-container {
+        width: calc(100% - 32px);
+    }
+
+
+    /* =====================================================
+       GREETING
+    ===================================================== */
+
+    .account-greeting {
+        margin-bottom: 20px;
+    }
+
+    .account-greeting h1 {
+        font-size: 27px;
+    }
+
+    .account-greeting p {
+        font-size: 14px;
+    }
+
+
+    /* =====================================================
+       ACTIVE ORDER
+    ===================================================== */
+
+    .account-active-order {
+        margin-bottom: 22px;
+        padding: 22px 20px;
+        border-radius: 20px;
+    }
+
+    .active-order-header {
+        gap: 12px;
+    }
+
+    .active-order-label {
+        margin-bottom: 5px;
+        font-size: 12px;
+    }
+
+    .active-order-header h2 {
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .active-order-count {
+        font-size: 12px;
+    }
+
+
+    /* =====================================================
+       ORDER PROGRESS
+    ===================================================== */
+
+    .order-progress {
+        display: grid;
+        grid-template-columns:
+            42px
+            minmax(0, 1fr)
+            42px
+            minmax(0, 1fr)
+            42px
+            minmax(0, 1fr)
+            42px;
+
+        align-items: start;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    .order-progress-step {
+        width: 42px;
+        min-width: 42px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+    }
+
+    .order-progress-dot {
+        width: 22px !important;
+        height: 22px !important;
+
+        font-size: 8px !important;
+        border-width: 1.5px;
+    }
+
+    .order-progress-step span {
+        display: block;
+
+        width: 42px;
+        max-width: 42px;
+
+        margin-top: 5px;
+
+        font-size: 7px !important;
+        line-height: 1.15 !important;
+
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    .order-progress-line {
+        width: 100%;
+        height: 2px !important;
+
+        margin-top: 10px;
+
+        align-self: start;
+    }
+
+
+    /* =====================================================
+       ACTIVE ORDER ACTION
+    ===================================================== */
+
+    .active-order-action {
+        margin-top: 18px;
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .active-order-action h3 {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .delivery-action-list {
+        gap: 10px;
+        margin-top: 13px;
+    }
+
+    .delivery-action-button {
+        min-height: 46px;
+        padding: 0 18px;
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       HISTORY
+    ===================================================== */
+
+    .account-history-card {
+        margin-bottom: 22px;
+        padding: 22px 20px;
+        border-radius: 18px;
+    }
+
+    .account-section-header h2 {
+        font-size: 20px;
+    }
+
+    .account-history-list {
+        margin-top: 14px;
+    }
+
+    .account-history-item {
+        gap: 14px;
+        padding: 15px 0;
+    }
+
+    .history-item-main h3 {
+        font-size: 15px;
+        line-height: 1.35;
+    }
+
+    .history-item-main span {
+        margin-top: 4px;
+        font-size: 12px;
+    }
+
+    .history-item-side {
+        gap: 3px;
+    }
+
+    .history-item-side strong {
+        font-size: 14px;
+    }
+
+    .history-status {
+        min-height: 24px;
+        padding: 0 8px;
+        font-size: 11px;
+    }
+
+    .account-history-button {
+        min-height: 46px;
+        margin-top: 18px;
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       PROFILE
+    ===================================================== */
+
+    .account-profile-card {
+        padding: 22px 20px;
+        border-radius: 18px;
+    }
+
+    .account-profile-header {
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+
+    .account-profile-header h2 {
+        font-size: 20px;
+    }
+
+    .account-profile-edit-main {
+        min-height: 34px;
+        padding: 0 13px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+
+    .account-profile-list {
+        margin-top: 12px;
+    }
+
+    .account-profile-item {
+        gap: 14px;
+        min-height: 72px;
+        padding: 13px 0;
+    }
+
+    .account-profile-item span {
+        margin-bottom: 3px;
+        font-size: 12px;
+    }
+
+    .account-profile-item strong {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .account-profile-edit {
+        width: 64px;
+        min-height: 36px;
+        font-size: 12px;
+        border-radius: 8px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .account-page {
+        padding: 25px 0 65px;
+    }
+
+    .account-container {
+        width: calc(100% - 24px);
+    }
+
+
+    /* =====================================================
+       GREETING
+    ===================================================== */
+
+    .account-greeting {
+        margin-bottom: 18px;
+    }
+
+    .account-greeting h1 {
+        font-size: 25px;
+    }
+
+    .account-greeting p {
+        margin-top: 4px;
+        font-size: 13px;
+    }
+
+
+    /* =====================================================
+       ACTIVE ORDER
+    ===================================================== */
+
+    .account-active-order {
+        padding: 18px 14px;
+        border-radius: 18px;
+    }
+
+    .active-order-header {
+        gap: 8px;
+    }
+
+    .active-order-label {
+        font-size: 11px;
+    }
+
+    .active-order-header h2 {
+        font-size: 16px;
+    }
+
+    .active-order-count {
+        font-size: 11px;
+    }
+
+
+    /* =====================================================
+       ORDER PROGRESS
+    ===================================================== */
+
+    .order-progress {
+        grid-template-columns:
+            36px
+            minmax(0, 1fr)
+            36px
+            minmax(0, 1fr)
+            36px
+            minmax(0, 1fr)
+            36px;
+
+        margin-top: 21px;
+    }
+
+    .order-progress-step {
+        width: 36px;
+        min-width: 36px;
+    }
+
+    .order-progress-dot {
+        width: 19px !important;
+        height: 19px !important;
+
+        font-size: 7px !important;
+    }
+
+    .order-progress-step span {
+        width: 36px;
+        max-width: 36px;
+
+        margin-top: 4px;
+
+        font-size: 6.5px !important;
+        line-height: 1.1 !important;
+    }
+
+    .order-progress-line {
+        height: 2px !important;
+        margin-top: 8px;
+    }
+
+
+    /* =====================================================
+       ACTIVE ORDER ACTION
+    ===================================================== */
+
+    .active-order-action {
+        margin-top: 16px;
+        padding: 16px;
+        border-radius: 15px;
+    }
+
+    .active-order-action h3 {
+        font-size: 15px;
+    }
+
+    .delivery-action-list {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .delivery-action-button {
+        width: 100%;
+        min-height: 44px;
+        font-size: 12px;
+    }
+
+
+    /* =====================================================
+       HISTORY
+    ===================================================== */
+
+    .account-history-card {
+        padding: 20px 16px;
+        border-radius: 17px;
+    }
+
+    .account-section-header h2 {
+        font-size: 19px;
+    }
+
+    .account-history-item {
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .history-item-main h3 {
+        font-size: 14px;
+    }
+
+    .history-item-main span {
+        font-size: 11px;
+    }
+
+    .history-item-side strong {
+        font-size: 13px;
+    }
+
+    .history-status {
+        font-size: 10px;
+    }
+
+    .account-history-button {
+        min-height: 44px;
+        font-size: 12px;
+    }
+
+
+    /* =====================================================
+       PROFILE
+    ===================================================== */
+
+    .account-profile-card {
+        padding: 20px 16px;
+        border-radius: 17px;
+    }
+
+    .account-profile-header h2 {
+        font-size: 19px;
+    }
+
+    .account-profile-edit-main {
+        min-height: 32px;
+        padding: 0 12px;
+        font-size: 11px;
+    }
+
+    .account-profile-item {
+        gap: 10px;
+        min-height: 66px;
+    }
+
+    .account-profile-item span {
+        font-size: 11px;
+    }
+
+    .account-profile-item strong {
+        font-size: 13px;
+    }
+
+    .account-profile-edit {
+        width: 58px;
+        min-height: 34px;
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE MODAL
+========================================================= */
+
+@media (max-width: 560px) {
+
+    .account-modal-dialog {
+        width: calc(100% - 24px);
+        max-height: calc(100vh - 24px);
+
+        margin: 12px auto;
+        padding: 20px;
+
+        border-radius: 17px;
+    }
+
+    .account-modal-header {
+        gap: 12px;
+        margin-bottom: 18px;
+    }
+
+    .account-modal-label {
+        margin-bottom: 5px;
+        font-size: 10px;
+    }
+
+    .account-modal-header h2 {
+        font-size: 20px;
+    }
+
+    .account-modal-close {
+        width: 32px;
+        height: 32px;
+        font-size: 19px;
+        border-radius: 8px;
+    }
+
+    .pickup-confirm-content,
+    .pickup-success-content,
+    .delivery-confirm-content,
+    .delivery-address-content {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+    .pickup-payment-info,
+    .pickup-payment-status {
+        gap: 12px;
+        padding: 12px 13px;
+    }
+
+    .pickup-payment-info span,
+    .pickup-payment-status span {
+        font-size: 12px;
+    }
+
+    .pickup-payment-info strong,
+    .pickup-payment-status strong {
+        font-size: 13px;
+    }
+
+    .account-modal-actions {
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+    }
+
+    .account-modal-button {
+        min-height: 40px;
+        padding: 0 14px;
+        font-size: 12px;
+        border-radius: 9px;
+    }
+}

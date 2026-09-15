@@ -1,0 +1,236 @@
+/* =========================================================
+   MODAL PERUBAHAN STATUS PAKET
+   ========================================================= */
+
+.package-status-modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(15, 23, 42, 0.52);
+
+    backdrop-filter: blur(2px);
+}
+
+.package-status-modal.show {
+    display: flex;
+}
+
+
+/* =========================================================
+   CONTAINER
+   ========================================================= */
+
+.package-status-container {
+    width: 100%;
+    max-width: 560px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #dfe8f4;
+    border-radius: 16px;
+
+    box-shadow:
+        0 24px 60px rgba(16, 42, 114, 0.18);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.package-status-header {
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #e8eef6;
+}
+
+.package-status-header h2 {
+    margin: 0;
+
+    color: #102a72;
+
+    font-size: 19px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+.package-status-header p {
+    margin: 7px 0 0;
+
+    color: #7185a5;
+
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.package-status-body {
+    padding: 22px 24px 8px;
+}
+
+.package-status-label {
+    margin-bottom: 12px;
+
+    color: #30486d;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   DAFTAR PERUBAHAN
+   ========================================================= */
+
+.package-status-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+
+    max-height: 280px;
+
+    overflow-y: auto;
+
+    padding-right: 3px;
+}
+
+.package-status-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto auto;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 14px;
+
+    background: #f8fbff;
+
+    border: 1px solid #e2ebf5;
+    border-radius: 10px;
+}
+
+.package-status-item-name {
+    min-width: 0;
+
+    overflow: hidden;
+
+    color: #243b61;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+.package-status-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 68px;
+
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    line-height: 1;
+}
+
+.package-status-chip.active {
+    background: #eaf7ef;
+    color: #278445;
+}
+
+.package-status-chip.inactive {
+    background: #eef0f3;
+    color: #667b9e;
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.package-status-arrow {
+    color: #90a2bb;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.package-status-footer {
+    margin-top: 18px;
+
+    padding: 16px 24px;
+
+    border-top: 1px solid #e8eef6;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   TOMBOL KONFIRMASI
+   ========================================================= */
+
+.btn-confirm-package-status {
+    min-height: 38px;
+
+    padding: 0 17px;
+
+    border: 1px solid #1769d1;
+    border-radius: 8px;
+
+    background: #1769d1;
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.btn-confirm-package-status:hover {
+    background: #1259b5;
+
+    box-shadow:
+        0 5px 12px rgba(23, 105, 209, 0.18);
+
+    transform: translateY(-1px);
+}
+
+.btn-confirm-package-status:active {
+    transform: translateY(0);
+}

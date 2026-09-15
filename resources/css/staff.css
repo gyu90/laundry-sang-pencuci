@@ -1,0 +1,1089 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f8fa;
+    color: #1f1f1f;
+}
+
+
+/* =========================
+   LAYOUT
+========================= */
+
+.staff-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   SIDEBAR STAFF
+========================= */
+
+.sidebar {
+    width: 240px;
+    background: #dceeff;
+    color: #1e3a5f;
+
+    display: flex;
+    flex-direction: column;
+
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    border-right: 1px solid #c7e0f7;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 23px 20px;
+
+    border-bottom: 1px solid #c7e0f7;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.logo-icon img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    padding: 5px;
+}
+
+.sidebar-logo h2 {
+    margin: 0;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    color: #1e3a5f;
+}
+
+.sidebar-logo span {
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 12px;
+
+    color: #5d7894;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.sidebar-menu {
+    padding: 20px 12px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 15px;
+
+    margin-bottom: 6px;
+
+    color: #42627f;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.menu-item:hover {
+    background: #c9e3f9;
+    color: #1e4f78;
+}
+
+.menu-item.active {
+    background: #b9daf5;
+    color: #174a73;
+
+    font-weight: 600;
+}
+
+.menu-icon {
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    color: #4d7191;
+
+    flex-shrink: 0;
+}
+
+.menu-item.active .menu-icon {
+    color: #174a73;
+}
+
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 15px;
+}
+
+.logout-button {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #42627f;
+
+    padding: 12px 10px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.logout-button:hover {
+    background: #c9e3f9;
+    color: #1e4f78;
+}
+
+.logout-icon {
+    width: 22px;
+    text-align: center;
+}
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+    margin-left: 240px;
+
+    width: calc(100% - 240px);
+
+    padding: 28px 32px;
+}
+
+
+/* ==========================================================
+   TOPBAR STAFF
+   Header umum seluruh halaman staff
+   ========================================================== */
+
+.topbar {
+    /*
+     * Topbar tetap berada di bagian atas
+     * ketika halaman di-scroll.
+     */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    /*
+     * Tinggi header.
+     */
+    min-height: 76px;
+
+    /*
+     * Isi berada di sebelah kanan.
+     */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    /*
+     * Ruang kiri dan kanan topbar.
+     */
+    padding: 0 28px;
+
+    /*
+     * Background menyatu dengan area utama.
+     */
+    background: #ffffff;
+
+    /*
+     * Hanya garis bawah sebagai pembatas.
+     */
+    border-bottom: 1px solid #e5e7eb;
+
+    /*
+     * Sedikit ruang agar header tidak terasa menempel
+     * dengan isi halaman.
+     */
+    margin-bottom: 28px;
+}
+
+
+/* ==========================================================
+   BAGIAN KANAN TOPBAR
+   ========================================================== */
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+}
+
+
+/* ==========================================================
+   INFORMASI STAFF
+   ========================================================== */
+
+.staff-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* ==========================================================
+   AVATAR STAFF
+   ========================================================== */
+
+.staff-avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f1f5f9;
+    color: #334155;
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   NAMA STAFF
+   ========================================================== */
+
+.staff-info strong {
+    display: block;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #1f2937;
+}
+
+
+/* ==========================================================
+   ROLE STAFF
+   ========================================================== */
+
+.staff-info span {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 12px;
+    color: #6b7280;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-section {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.income-card,
+.stat-card {
+    min-height: 105px;
+
+    padding: 22px;
+
+    border-radius: 10px;
+}
+
+.income-card {
+    background: transparent;
+}
+
+.income-card span,
+.stat-card span {
+    display: block;
+
+    font-size: 14px;
+}
+
+.income-card strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 28px;
+}
+
+.stat-card strong {
+    display: block;
+
+    margin-top: 8px;
+
+    font-size: 26px;
+}
+
+.stat-card.waiting {
+    background: #f9dca5;
+    color: #805b18;
+}
+
+.stat-card.process {
+    background: #c9def8;
+    color: #215895;
+}
+
+.stat-card.ready {
+    background: #c9e9c8;
+    color: #18751c;
+}
+
+
+/* =========================
+   DASHBOARD CARD
+========================= */
+
+.dashboard-card {
+    background: #ffffff;
+
+    border: 1px solid #e2e2e2;
+
+    border-radius: 12px;
+
+    padding: 22px;
+
+    margin-bottom: 25px;
+}
+
+.card-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 18px;
+}
+
+.card-header h2 {
+    margin: 0;
+
+    font-size: 18px;
+}
+
+.card-header a {
+    color: #555;
+
+    text-decoration: none;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 13px 5px;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    text-align: left;
+
+    font-size: 14px;
+}
+
+th {
+    color: #666;
+
+    font-weight: 500;
+}
+
+td.amount {
+    text-align: right;
+
+    font-weight: 500;
+}
+
+th:last-child {
+    text-align: right;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    display: inline-block;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status.waiting {
+    background: #f9dca5;
+    color: #805b18;
+}
+
+.status.process {
+    background: #c9def8;
+    color: #215895;
+}
+
+.status.ready {
+    background: #c9e9c8;
+    color: #18751c;
+}
+
+.status.completed {
+    background: #eeeeee;
+    color: #555555;
+}
+
+
+/* =========================
+   VIEW ORDERS
+========================= */
+
+.view-orders {
+    display: block;
+
+    margin-top: 18px;
+
+    padding: 11px;
+
+    border: 1px solid #d8d8d8;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    color: #222;
+
+    font-size: 14px;
+}
+
+.view-orders:hover {
+    background: #f5f5f5;
+}
+
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category-item {
+    margin-bottom: 17px;
+}
+
+.category-label {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+}
+
+.category-label strong {
+    color: #555;
+}
+
+.progress {
+    height: 8px;
+
+    background: #f1f1f1;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background: #3279d3;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+
+        width: calc(100% - 200px);
+
+        padding: 22px;
+    }
+
+    .summary-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 18px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .summary-section {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ================================
+   STATUS PEMBAYARAN
+================================ */
+
+.payment-status-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 9px;
+}
+
+.payment-status-option {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 42px;
+    padding: 0 14px;
+
+    border: 1px solid #dfe4ec;
+    border-radius: 10px;
+
+    background: #fff;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: #596579;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.payment-status-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.payment-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9aa6b8;
+    flex-shrink: 0;
+}
+
+.payment-status-option.unpaid.active {
+    border-color: #f6a15a;
+    background: #fff7ef;
+    color: #c96a18;
+}
+
+.payment-status-option.unpaid.active .payment-status-dot {
+    background: #e88719;
+}
+
+.payment-status-option.paid.active {
+    border-color: #14877d;
+    background: #eef9f7;
+    color: #126e67;
+}
+
+.payment-status-option.paid.active .payment-status-dot {
+    background: #14877d;
+}
+
+/* ==================================================
+   MODAL VALIDASI PEMBAYARAN
+================================================== */
+
+.payment-validation-modal {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background: rgba(15, 23, 42, 0.45);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 1000;
+}
+
+.payment-validation-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.payment-validation-modal-content {
+    width: 100%;
+    max-width: 520px;
+
+    max-height: 90vh;
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.18);
+
+    transform: translateY(10px);
+
+    transition: transform 0.2s ease;
+}
+
+.payment-validation-modal.show
+.payment-validation-modal-content {
+    transform: translateY(0);
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.payment-validation-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.payment-validation-modal-header h2 {
+    margin: 0;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #1f2937;
+}
+
+.payment-validation-modal-header p {
+    margin: 6px 0 0;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: #7b8494;
+}
+
+.payment-validation-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    padding: 0;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #7b8494;
+
+    font-size: 24px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.payment-validation-modal-close:hover {
+    background: #f3f5f8;
+    color: #1f2937;
+}
+
+
+/* ==================================================
+   BODY
+================================================== */
+
+.payment-validation-modal-body {
+    padding: 24px;
+}
+
+
+/* ==================================================
+   INFORMASI ORDER
+================================================== */
+
+.payment-validation-order-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 14px;
+
+    margin-bottom: 22px;
+}
+
+.payment-validation-order-info > div {
+    padding: 14px;
+
+    border: 1px solid #edf0f4;
+    border-radius: 10px;
+
+    background: #fafbfc;
+}
+
+.payment-validation-order-info span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 12px;
+    color: #8992a1;
+}
+
+.payment-validation-order-info strong {
+    display: block;
+
+    font-size: 14px;
+
+    color: #1f2937;
+}
+
+
+/* ==================================================
+   SECTION
+================================================== */
+
+.payment-validation-section {
+    margin-bottom: 20px;
+}
+
+.payment-validation-section h3 {
+    margin: 0 0 10px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    color: #374151;
+}
+
+
+/* ==================================================
+   DETAIL LAYANAN
+================================================== */
+
+.payment-service-list {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #edf0f4;
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.payment-service-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 13px 14px;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.payment-service-item:last-child {
+    border-bottom: none;
+}
+
+.payment-service-name {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.payment-service-name strong {
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #374151;
+}
+
+.payment-service-name span {
+    font-size: 12px;
+    color: #8a93a2;
+}
+
+.payment-service-price {
+    white-space: nowrap;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #374151;
+}
+
+
+/* ==================================================
+   INFO VOUCHER
+================================================== */
+
+.payment-validation-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid #edf0f4;
+}
+
+.payment-validation-info-row:last-child {
+    border-bottom: none;
+}
+
+.payment-validation-info-row span {
+    font-size: 13px;
+    color: #7b8494;
+}
+
+.payment-validation-info-row strong {
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #374151;
+}
+
+
+/* ==================================================
+   TOTAL
+================================================== */
+
+.payment-validation-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-top: 22px;
+    padding: 17px 18px;
+
+    border-radius: 12px;
+
+    background: #f7f9fb;
+}
+
+.payment-validation-total span {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #596273;
+}
+
+.payment-validation-total strong {
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #1f2937;
+}
+
+
+/* ==================================================
+   STATUS PEMBAYARAN
+================================================== */
+
+.payment-validation-payment-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin-top: 14px;
+}
+
+.payment-validation-payment-status > span:first-child {
+    font-size: 13px;
+    color: #7b8494;
+}
+
+.payment-status-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 30px;
+    padding: 0 11px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.payment-status-badge.unpaid {
+    background: #fff4e8;
+    color: #c96a18;
+}
+
+.payment-status-badge.paid {
+    background: #eaf8f5;
+    color: #14766e;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.payment-validation-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 18px 24px;
+
+    border-top: 1px solid #edf0f4;
+}

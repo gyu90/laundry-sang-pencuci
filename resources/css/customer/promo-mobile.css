@@ -1,0 +1,600 @@
+/* =========================================================
+   SANG PENCUCI
+   CUSTOMER - PROMO MOBILE
+========================================================= */
+
+
+/* =========================================================
+   PROMO HERO
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .promo-hero {
+        grid-template-columns: 1fr;
+
+        min-height: 0;
+
+        gap: 0;
+
+        padding-top: 30px;
+        padding-bottom: 26px;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        overflow: hidden;
+    }
+
+
+    /* -----------------------------------------------------
+       HERO CONTENT
+    ----------------------------------------------------- */
+
+    .promo-hero-content {
+        width: 100%;
+        max-width: 100%;
+
+        transform: none;
+
+        text-align: left;
+    }
+
+
+    .promo-hero-content .home-section-label {
+        margin-bottom: 10px;
+
+        font-size: 17px;
+
+        letter-spacing: 1.2px;
+    }
+
+
+    .promo-hero-content h1 {
+        margin-bottom: 13px;
+
+        font-size: 37px;
+
+        line-height: 1.05;
+
+        letter-spacing: -0.9px;
+    }
+
+
+    .promo-hero-content p {
+        max-width: 100%;
+
+        margin: 0;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    /* -----------------------------------------------------
+       HERO VISUAL
+    ----------------------------------------------------- */
+
+    .promo-hero-visual {
+        width: 100%;
+
+        height: 225px;
+
+        margin-top: 8px;
+    }
+
+
+    .promo-hero-visual::before {
+        width: 280px;
+        height: 160px;
+
+        right: 50%;
+        top: 22px;
+
+        transform:
+            translateX(50%)
+            rotate(-6deg);
+    }
+
+
+    .promo-hero-visual::after {
+        width: 180px;
+        height: 100px;
+
+        right: 50%;
+        bottom: 18px;
+
+        transform:
+            translateX(50%)
+            rotate(7deg);
+    }
+
+
+    /* -----------------------------------------------------
+       TICKET
+    ----------------------------------------------------- */
+
+    .promo-ticket {
+        position: absolute;
+
+        left: 0;
+        top: 28px;
+
+        width: 225px;
+
+        min-height: 108px;
+
+        padding: 15px 18px;
+
+        border-radius: 15px;
+
+        transform: rotate(-4deg);
+    }
+
+
+    .promo-ticket-label {
+        margin-bottom: 8px;
+
+        font-size: 9px;
+
+        letter-spacing: 1.1px;
+    }
+
+
+    .promo-ticket-title {
+        max-width: 180px;
+
+        font-size: 20px;
+
+        line-height: 1.08;
+    }
+
+
+    .promo-ticket-line {
+        margin: 12px 0 8px;
+    }
+
+
+    .promo-ticket-bottom {
+        gap: 8px;
+    }
+
+
+    .promo-ticket-bottom span,
+    .promo-ticket-bottom strong {
+        font-size: 8px;
+    }
+
+
+    .promo-ticket::before,
+    .promo-ticket::after {
+        width: 18px;
+        height: 18px;
+    }
+
+
+    .promo-ticket::before {
+        left: -9px;
+    }
+
+
+    .promo-ticket::after {
+        right: -9px;
+    }
+
+
+    /* -----------------------------------------------------
+       CHECKLIST
+    ----------------------------------------------------- */
+
+    .promo-hero-checklist {
+        position: absolute;
+
+        width: 128px;
+
+        right: 0;
+        top: 78px;
+
+        padding: 11px 10px;
+
+        border-radius: 12px;
+
+        transform: rotate(2deg);
+    }
+
+
+    .promo-check-item {
+        gap: 6px;
+
+        margin-bottom: 6px;
+    }
+
+
+    .promo-check-item span {
+        width: 13px;
+        height: 13px;
+
+        font-size: 8px;
+    }
+
+
+    .promo-check-item p {
+        font-size: 8px;
+
+        line-height: 1.3;
+    }
+
+
+    /* -----------------------------------------------------
+       ARROW
+    ----------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+    .promo-arrow {
+        width: 68px;
+        height: 28px;
+
+        left: 190px;
+        top: 65px;
+
+        border-top: 2px solid #31557D;
+        border-right: 2px solid #31557D;
+
+        border-radius: 0 70px 0 0;
+
+        transform: rotate(8deg);
+    }
+
+    .promo-arrow::after {
+        content: "";
+
+        position: absolute;
+
+        right: -4px;
+        bottom: -1px;
+
+        width: 0;
+        height: 0;
+
+        border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 9px solid #31557D;
+
+        transform: rotate(-150deg);
+    }
+}
+
+
+    /* -----------------------------------------------------
+       HERO CAPTION
+    ----------------------------------------------------- */
+
+    .promo-hero-caption {
+        right: 38px;
+        bottom: 0;
+
+        transform: rotate(-3deg);
+    }
+
+
+    .promo-hero-caption span,
+    .promo-hero-caption strong {
+        font-size: 9px;
+
+        line-height: 1.2;
+    }
+
+
+    /* =====================================================
+       PROMO LIST
+    ===================================================== */
+
+    .promo-list-section {
+        padding: 40px 0 55px;
+    }
+
+
+    .promo-list-heading {
+        margin-bottom: 22px;
+    }
+
+
+    .promo-list-heading .home-section-label {
+        margin-bottom: 8px;
+
+        font-size: 17px;
+
+        letter-spacing: 1.2px;
+    }
+
+
+    .promo-list-heading h2 {
+        margin-bottom: 8px;
+
+        font-size: 27px;
+
+        line-height: 1.18;
+    }
+
+
+    .promo-list-heading p {
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+
+    /* -----------------------------------------------------
+       PROMO GRID
+    ----------------------------------------------------- */
+
+    .promo-list-grid {
+        grid-template-columns: 1fr;
+
+        width: 100%;
+
+        gap: 16px;
+    }
+
+
+    /* -----------------------------------------------------
+       PROMO CARD
+    ----------------------------------------------------- */
+
+    .promo-program-card {
+        min-height: 0;
+
+        padding: 21px;
+
+        border-radius: 18px;
+    }
+
+
+    .promo-program-top {
+        align-items: flex-start;
+
+        gap: 8px;
+
+        margin-bottom: 17px;
+    }
+
+
+    .promo-program-badge {
+        flex-shrink: 0;
+
+        padding: 5px 9px;
+
+        font-size: 9px;
+    }
+
+
+    .promo-program-period {
+        font-size: 9px;
+
+        line-height: 1.35;
+    }
+
+
+    .promo-program-content h3 {
+        margin-bottom: 8px;
+
+        font-size: 19px;
+
+        line-height: 1.25;
+    }
+
+
+    .promo-program-reward {
+        margin-top: 18px;
+        margin-bottom: 14px;
+
+        padding: 14px;
+
+        gap: 4px;
+
+        border-radius: 12px;
+    }
+
+
+    .promo-program-reward span {
+        font-size: 10px;
+    }
+
+
+    .promo-program-reward strong {
+        font-size: 16px;
+
+        line-height: 1.3;
+    }
+
+
+    .promo-program-service {
+        gap: 10px;
+
+        padding-top: 12px;
+    }
+
+
+    .promo-program-service span {
+        font-size: 10px;
+    }
+
+
+    .promo-program-service strong {
+        font-size: 11px;
+
+        line-height: 1.35;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .promo-hero {
+        padding-top: 27px;
+        padding-bottom: 23px;
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    .promo-hero-content .home-section-label {
+        font-size: 16px;
+    }
+
+
+    .promo-hero-content h1 {
+        font-size: 34px;
+
+        letter-spacing: -0.8px;
+    }
+
+
+    .promo-hero-content p {
+        font-size: 12.5px;
+    }
+
+
+    .promo-hero-visual {
+        height: 215px;
+    }
+
+
+    .promo-ticket {
+        width: 210px;
+
+        min-height: 102px;
+
+        padding: 14px 17px;
+
+        left: 0;
+
+        top: 26px;
+    }
+
+
+    .promo-ticket-title {
+        max-width: 170px;
+
+        font-size: 18px;
+    }
+
+
+    .promo-ticket-label {
+        margin-bottom: 7px;
+
+        font-size: 8px;
+    }
+
+
+    .promo-ticket-bottom span,
+    .promo-ticket-bottom strong {
+        font-size: 7.5px;
+    }
+
+
+    .promo-hero-checklist {
+        width: 122px;
+
+        right: 0;
+        top: 75px;
+
+        padding: 10px 9px;
+    }
+
+
+    .promo-check-item {
+        margin-bottom: 5px;
+    }
+
+
+    .promo-check-item span {
+        width: 12px;
+        height: 12px;
+
+        font-size: 7px;
+    }
+
+
+    .promo-check-item p {
+        font-size: 7.5px;
+    }
+
+
+ .promo-arrow {
+        width: 58px;
+        height: 25px;
+
+        left: 200px;
+        top: 45px;
+
+        transform: rotate(8deg);
+    }
+
+
+    .promo-hero-caption {
+        right: 25px;
+        bottom: -1px;
+    }
+
+
+    .promo-hero-caption span,
+    .promo-hero-caption strong {
+        font-size: 8.5px;
+    }
+
+
+    /* -----------------------------------------------------
+       PROMO LIST
+    ----------------------------------------------------- */
+
+    .promo-list-section {
+        padding: 34px 0 48px;
+    }
+
+
+    .promo-list-heading .home-section-label {
+        font-size: 16px;
+    }
+
+
+    .promo-list-heading h2 {
+        font-size: 24px;
+    }
+
+
+    .promo-list-heading p {
+        font-size: 12px;
+    }
+
+
+    .promo-program-card {
+        padding: 18px;
+    }
+
+
+    .promo-program-period {
+        font-size: 8.5px;
+    }
+
+
+    .promo-program-content h3 {
+        font-size: 18px;
+    }
+
+
+    .promo-program-reward {
+        padding: 12px;
+    }
+
+
+    .promo-program-reward strong {
+        font-size: 15px;
+    }
+}
