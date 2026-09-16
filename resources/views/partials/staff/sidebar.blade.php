@@ -36,18 +36,6 @@
 
         </a>
 
-
-        {{-- Tambah transaksi --}}
-        <a href="#"
-           class="menu-item">
-
-            <span class="menu-icon">＋</span>
-
-            <span>Tambah Transaksi</span>
-
-        </a>
-
-
         {{-- Pelanggan --}}
         <a href="{{ route('staff.customers.index')}}"
            class="menu-item">

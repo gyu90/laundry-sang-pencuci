@@ -50,13 +50,13 @@
             <div class="customer-footer-social">
 
                 {{-- Instagram --}}
-                <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="customer-footer-social-link"
-                    aria-label="Instagram Sang Pencuci"
-                >
+               <a
+    href="https://www.instagram.com/sangpencucimedan/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="customer-footer-social-link"
+    aria-label="Instagram Sang Pencuci"
+>
                     <svg
                         viewBox="0 0 24 24"
                         aria-hidden="true"
@@ -89,13 +89,13 @@
 
 
                 {{-- WhatsApp --}}
-                <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="customer-footer-social-link"
-                    aria-label="WhatsApp Sang Pencuci"
-                >
+               <a
+    href="https://wa.me/6285270113350"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="customer-footer-social-link"
+    aria-label="WhatsApp Sang Pencuci"
+>
                     <svg
                         viewBox="0 0 24 24"
                         aria-hidden="true"
@@ -146,37 +146,21 @@
             </p>
 
 
-            {{-- MAP --}}
-            <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="customer-footer-map"
-                aria-label="Lihat lokasi Sang Pencuci di Google Maps"
-            >
+           {{-- MAP --}}
+<div class="customer-footer-map">
 
-                <div class="customer-footer-map-content">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.8894538499017!2d98.6453392!3d3.6127555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30312e0e5b646163%3A0xe1980f9f376d3acc!2sJl.%20Kapten%20Muslim%20No.224%2C%20Helvetia%20Tim.%2C%20Kec.%20Medan%20Helvetia%2C%20Kota%20Medan%2C%20Sumatera%20Utara%2020123!5e0!3m2!1sid!2sid!4v1789485923915!5m2!1sid!2sid"
+        width="100%"
+        height="300"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        title="Lokasi Sang Pencuci"
+    ></iframe>
 
-                    <div class="customer-footer-map-pin">
-                        <span></span>
-                    </div>
-
-                    <div class="customer-footer-map-info">
-
-                        <strong>
-                            Sang Pencuci
-                        </strong>
-
-                        <span>
-                            Lihat lokasi di Google Maps
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </a>
-
+</div>
 
             {{-- ALAMAT --}}
             <div class="customer-footer-address">

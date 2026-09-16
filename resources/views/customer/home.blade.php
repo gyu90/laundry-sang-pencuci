@@ -25,30 +25,27 @@
     {{-- HERO CONTENT --}}
     <div class="home-container home-hero-inner">
 
-        <div class="home-hero-content">
+<div class="home-hero-content">
 
-            @auth
-                <span class="home-hero-greeting">
-                    Halo, {{ auth()->user()->username }} 👋
-                </span>
-            @else
-                <span class="home-eyebrow">
-                    SANG PENCUCI
-                </span>
-            @endauth
+ @auth
+    <span class="home-hero-greeting">
+        Halo, {{ auth()->user()->customer->name }} 👋
+    </span>
+@else
+    <span class="home-eyebrow">
+        SANG PENCUCI
+    </span>
+@endauth
 
+    <h1>
+        <span class="hero-line-one">
+            Nyuci itu berat,
+        </span>
 
-            <h1>
-
-                <span class="hero-line-one">
-                    Nyuci itu berat,
-                </span>
-
-                <span class="hero-line-two">
-                    biar kami saja.
-                </span>
-
-            </h1>
+        <span class="hero-line-two">
+            biar kami saja.
+        </span>
+    </h1>
 
 
             <p>
@@ -793,8 +790,11 @@
 
         </section>
 
+
+      
+
     @endif
 
 @endauth
-
+  @include('customer.components.whatsapp-float')
 @endsection

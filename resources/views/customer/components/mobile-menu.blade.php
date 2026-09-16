@@ -64,7 +64,7 @@
         </a>
 
 
-        <a href="{{ url('/#promo') }}">
+         <a href="{{ route('customer.promo') }}">
             <span class="mobile-menu-icon">✦</span>
             <span>Promo</span>
         </a>
