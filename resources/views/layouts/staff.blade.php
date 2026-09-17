@@ -18,6 +18,13 @@
         @yield('title', 'Staff - Sang Pencuci')
     </title>
 
+
+<link
+        rel="icon"
+        type="image/png"
+        href="{{ asset('images/logo.png') }}"
+    >
+
     @if(auth()->user()->role === 'owner')
         @vite([
             'resources/css/owner.css',

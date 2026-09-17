@@ -36,7 +36,7 @@ use App\Http\Controllers\CustomerPromoController;
 // =========================================================
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('customer.home');
 });
 
 
