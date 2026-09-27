@@ -16,7 +16,7 @@ use App\Http\Controllers\Staff\OrderController;
 use App\Http\Controllers\Staff\LoyaltyProgramController;
 use App\Http\Controllers\Staff\DashboardController as StaffDashboardController;
 use App\Http\Controllers\Staff\CustomerMapsController;
-
+use App\Http\Controllers\Auth\ForgotPasswordController;
 // =========================================================
 // OWNER
 // =========================================================
@@ -60,13 +60,57 @@ Route::get('/promo', [CustomerPromoController::class, 'index'])
 // Login hanya untuk user yang belum login
 Route::middleware('guest')->group(function () {
 
-    // Menampilkan halaman login
     Route::get('/login', [LoginController::class, 'create'])
         ->name('login');
 
-    // Memproses login
+    Route::get(
+        '/forgot-password',
+        [ForgotPasswordController::class, 'create']
+    )->name('password.request');
+
     Route::post('/login', [LoginController::class, 'store'])
         ->name('login.store');
+
+    Route::post(
+    '/forgot-password',
+    [ForgotPasswordController::class, 'sendOtp']
+)->name('password.send.otp');
+
+
+Route::get(
+    '/verify-otp',
+    [ForgotPasswordController::class, 'showOtp']
+)->name('password.otp');
+
+Route::post(
+    '/verify-otp',
+    [ForgotPasswordController::class, 'verifyOtp']
+)->name('password.verify.otp');
+
+Route::get(
+    '/reset-password',
+    [ForgotPasswordController::class, 'showResetPassword']
+)->name('password.reset');
+
+
+Route::post(
+    '/reset-password',
+    [ForgotPasswordController::class, 'resetPassword']
+)->name('password.update');
+
+});
+
+Route::get('/test-fonnte', function () {
+    $fonnte = new \App\Services\FonnteService();
+
+    $result = $fonnte->sendMessage(
+        '081374138459',
+        '🧺 Pesan test dari Sang Pencuci.
+
+Fonnte berhasil terhubung! 🎉'
+    );
+
+    return response()->json($result);
 });
 
 
@@ -158,6 +202,10 @@ Route::middleware('auth')->group(function () {
         // Daftar customer
         Route::get('/customers', [CustomerController::class, 'index'])
             ->name('customers.index');
+
+        // Detail customer
+        Route::get('/customers/{customer}', [CustomerController::class, 'show'])
+             ->name('customers.show');
 
         // Tambah customer
         Route::post('/customers', [CustomerController::class, 'store'])

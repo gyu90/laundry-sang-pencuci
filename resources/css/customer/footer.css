@@ -955,3 +955,14 @@
 
 }
 
+.customer-footer-map {
+    position: relative;
+}
+
+.customer-footer-map-link {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    display: block;
+    cursor: pointer;
+}

@@ -254,7 +254,158 @@ document.addEventListener('DOMContentLoaded', () => {
 
         });
 
+// ======================================================
+// EDIT CUSTOMER
+// ======================================================
 
+const customerTableWrapper =
+    document.querySelector('.customer-table-wrapper');
+
+customerTableWrapper?.addEventListener('click', async (event) => {
+
+    const editButton =
+        event.target.closest('.customer-edit-button');
+
+    // Kalau yang diklik bukan tombol Edit, abaikan
+    if (!editButton) {
+        return;
+    }
+
+    const customerId =
+        editButton.dataset.customerId;
+
+    if (!customerId) {
+        return;
+    }
+
+    console.log('Edit customer ID:', customerId);
+
+    try {
+
+        // ==================================================
+        // AMBIL DATA CUSTOMER
+        // ==================================================
+
+        const response = await fetch(
+            `/staff/customers/${customerId}/edit`,
+            {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error(
+                'Data customer gagal diambil.'
+            );
+        }
+
+        const customer =
+            await response.json();
+
+        console.log(
+            'Data customer:',
+            customer
+        );
+
+
+        // ==================================================
+        // MODE EDIT
+        // ==================================================
+
+        modalTitle.textContent =
+            'Edit Customer';
+
+        modalDescription.textContent =
+            'Perbarui data pelanggan yang tersimpan dalam sistem.';
+
+        submitButton.textContent =
+            'Simpan Perubahan';
+
+
+        // ==================================================
+        // ISI DATA CUSTOMER
+        // ==================================================
+
+        nameInput.value =
+            customer.name ?? '';
+
+        phoneInput.value =
+            customer.phone ?? '';
+
+        emailInput.value =
+            customer.email ?? '';
+
+        addressInput.value =
+            customer.address ?? '';
+
+
+        // ==================================================
+        // PASSWORD DISEMBUNYIKAN
+        // ==================================================
+
+        passwordFields.style.display =
+            'none';
+
+
+        // ==================================================
+        // ACTION FORM
+        // ==================================================
+
+        form.action =
+            `/staff/customers/${customerId}`;
+
+
+        // ==================================================
+        // METHOD PUT
+        // ==================================================
+
+        let methodInput =
+            form.querySelector(
+                'input[name="_method"]'
+            );
+
+        if (!methodInput) {
+
+            methodInput =
+                document.createElement('input');
+
+            methodInput.type =
+                'hidden';
+
+            methodInput.name =
+                '_method';
+
+            form.appendChild(
+                methodInput
+            );
+        }
+
+        methodInput.value =
+            'PUT';
+
+
+        // ==================================================
+        // BUKA MODAL
+        // ==================================================
+
+        openModal();
+
+    } catch (error) {
+
+        console.error(
+            'Edit customer error:',
+            error
+        );
+
+        alert(
+            'Data customer tidak dapat dimuat.'
+        );
+    }
+
+});
         // ======================================================
         // ESC CUSTOMER MODAL
         // ======================================================
@@ -275,127 +426,122 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    // ==========================================================
-    // AMBIL SENDIRI
-    // ==========================================================
+// ==========================================================
+// AMBIL SENDIRI
+// ==========================================================
 
-    const pickupButton =
-        document.getElementById('openPickupConfirm');
+const pickupButtons =
+    document.querySelectorAll('.open-pickup-confirm');
 
-    const pickupModal =
-        document.getElementById('pickupConfirmModal');
+const pickupModal =
+    document.getElementById('pickupConfirmModal');
 
-    const closePickupModalButton =
-        document.getElementById('closePickupConfirmModal');
+const closePickupModalButton =
+    document.getElementById('closePickupConfirmModal');
 
-    const cancelPickupButton =
-        document.getElementById('cancelPickupConfirm');
+const cancelPickupButton =
+    document.getElementById('cancelPickupConfirm');
 
-    const confirmPickupButton =
-        document.getElementById('confirmPickup');
-
-    const pickupForm =
-        document.getElementById('pickupOrderForm');
+const pickupForm =
+    document.getElementById('pickupConfirmForm');
 
 
-    // ==========================================================
-    // CEK MODAL AMBIL SENDIRI
-    // ==========================================================
+// ==========================================================
+// CEK MODAL AMBIL SENDIRI
+// ==========================================================
 
-    if (
-        pickupButton &&
-        pickupModal &&
-        pickupForm
-    ) {
+if (
+    pickupButtons.length &&
+    pickupModal &&
+    pickupForm
+) {
 
-        // ======================================================
-        // BUKA MODAL
-        // ======================================================
+    // ======================================================
+    // BUKA MODAL
+    // ======================================================
 
-        const openPickupModal = () => {
+    const openPickupModal = (orderId) => {
 
-            pickupModal.classList.add('show');
+        // Tentukan action berdasarkan pesanan yang dipilih
+        pickupForm.action =
+    `/customer/pesanan/${orderId}/ambil-sendiri`;
+        pickupModal.classList.add('show');
 
-            document.body.style.overflow = 'hidden';
-
-        };
-
-
-        // ======================================================
-        // TUTUP MODAL
-        // ======================================================
-
-        const closePickupModal = () => {
-
-            pickupModal.classList.remove('show');
-
-            document.body.style.overflow = '';
-
-        };
+        document.body.style.overflow = 'hidden';
+    };
 
 
-        // ======================================================
-        // TOMBOL AMBIL SENDIRI
-        // ======================================================
+    // ======================================================
+    // TUTUP MODAL
+    // ======================================================
 
-        pickupButton.addEventListener(
-            'click',
-            openPickupModal
-        );
+    const closePickupModal = () => {
 
+        pickupModal.classList.remove('show');
 
-        // ======================================================
-        // CLOSE
-        // ======================================================
-
-        closePickupModalButton?.addEventListener(
-            'click',
-            closePickupModal
-        );
+        document.body.style.overflow = '';
+    };
 
 
-        // ======================================================
-        // BATAL
-        // ======================================================
+    // ======================================================
+    // TOMBOL AMBIL SENDIRI
+    // ======================================================
 
-        cancelPickupButton?.addEventListener(
-            'click',
-            closePickupModal
-        );
+    pickupButtons.forEach(button => {
 
+        button.addEventListener('click', () => {
 
-        // ======================================================
-        // YA, AMBIL SENDIRI
-        // ======================================================
+            const orderId =
+                button.dataset.orderId;
 
-        confirmPickupButton?.addEventListener(
-            'click',
-            () => {
-
-                pickupForm.submit();
-
-            }
-        );
-
-
-        // ======================================================
-        // ESC
-        // ======================================================
-
-        document.addEventListener('keydown', event => {
-
-            if (
-                event.key === 'Escape' &&
-                pickupModal.classList.contains('show')
-            ) {
-
-                closePickupModal();
-
+            if (!orderId) {
+                return;
             }
 
+            openPickupModal(orderId);
         });
 
-    }
+    });
+
+
+    // ======================================================
+    // CLOSE
+    // ======================================================
+
+    closePickupModalButton?.addEventListener(
+        'click',
+        closePickupModal
+    );
+
+
+    // ======================================================
+    // BATAL
+    // ======================================================
+
+    cancelPickupButton?.addEventListener(
+        'click',
+        closePickupModal
+    );
+
+
+    // ======================================================
+    // ESC
+    // ======================================================
+
+    document.addEventListener('keydown', event => {
+
+        if (
+            event.key === 'Escape' &&
+            pickupModal.classList.contains('show')
+        ) {
+
+            closePickupModal();
+
+        }
+
+    });
+
+}
 
 });
 
@@ -475,8 +621,8 @@ if (pickupSuccessModal) {
 // MINTA DIANTAR
 // ==========================================================
 
-const deliveryButton =
-    document.getElementById('openDeliveryRequest');
+const deliveryButtons =
+    document.querySelectorAll('.open-delivery-request');
 
 const deliveryConfirmModal =
     document.getElementById('deliveryConfirmModal');
@@ -487,8 +633,8 @@ const closeDeliveryConfirmModalButton =
 const cancelDeliveryConfirmButton =
     document.getElementById('cancelDeliveryConfirm');
 
-const confirmDeliveryRequestButton =
-    document.getElementById('confirmDeliveryRequest');
+const deliveryConfirmForm =
+    document.getElementById('deliveryConfirmForm');
 
 const deliveryAddressModal =
     document.getElementById('deliveryAddressModal');
@@ -507,59 +653,81 @@ const openAddressEditButton =
 // CEK MINTA DIANTAR
 // ==========================================================
 
-if (deliveryButton) {
+if (deliveryButtons.length) {
 
-    deliveryButton.addEventListener('click', () => {
+    deliveryButtons.forEach(button => {
 
-        /*
-         * Alamat diambil langsung dari tampilan
-         * Account Profile.
-         */
-const addressElement =
-    document.getElementById('customerAddress');
+        button.addEventListener('click', () => {
 
-const address =
-    addressElement?.dataset.address?.trim() ?? '';
+            const orderId =
+                button.dataset.orderId;
 
-const mapsInput =
-    document.getElementById('accountMapsLink');
+            if (!orderId) {
+                return;
+            }
 
-const mapsLink =
-    mapsInput?.value?.trim() ?? '';
-
-
-// ==================================================
-// CEK ALAMAT + GOOGLE MAPS
-// ==================================================
-
-const hasAddress =
-    address && address !== '-';
-
-const hasMapsLink =
-    mapsLink !== '';
+            /*
+             * Simpan order yang dipilih ke form.
+             * Jadi ketika user klik "Ya, Minta Diantar",
+             * request akan masuk ke pesanan yang benar.
+             */
+            if (deliveryConfirmForm) {
+               deliveryConfirmForm.action =
+    `/customer/pesanan/${orderId}/minta-diantar`;
+            }
 
 
-// ==================================================
-// DATA LOKASI BELUM LENGKAP
-// ==================================================
+            /*
+             * Alamat diambil langsung dari tampilan
+             * Account Profile.
+             */
+            const addressElement =
+                document.getElementById('customerAddress');
 
-if (!hasAddress || !hasMapsLink) {
+            const address =
+                addressElement?.dataset.address?.trim() ?? '';
 
-    deliveryAddressModal?.classList.add('show');
+            const mapsInput =
+                document.getElementById('accountMapsLink');
 
-    document.body.style.overflow = 'hidden';
-
-    return;
-}
+            const mapsLink =
+                mapsInput?.value?.trim() ?? '';
 
 
-// ==================================================
-// ALAMAT + MAPS SUDAH LENGKAP
-// ==================================================
+            // ==================================================
+            // CEK ALAMAT + GOOGLE MAPS
+            // ==================================================
 
-deliveryConfirmModal?.classList.add('show');
+            const hasAddress =
+                address && address !== '-';
 
-document.body.style.overflow = 'hidden';
+            const hasMapsLink =
+                mapsLink !== '';
+
+
+            // ==================================================
+            // DATA LOKASI BELUM LENGKAP
+            // ==================================================
+
+            if (!hasAddress || !hasMapsLink) {
+
+                deliveryAddressModal?.classList.add('show');
+
+                document.body.style.overflow = 'hidden';
+
+                return;
+            }
+
+
+            // ==================================================
+            // ALAMAT + MAPS SUDAH LENGKAP
+            // ==================================================
+
+            deliveryConfirmModal?.classList.add('show');
+
+            document.body.style.overflow = 'hidden';
+
+        });
 
     });
 
@@ -629,6 +797,7 @@ openAddressEditButton?.addEventListener(
 
         document.body.style.overflow = '';
 
+
         // Buka modal edit akun yang sudah ada
         document
             .getElementById('openAccountEdit')
@@ -671,8 +840,6 @@ document.addEventListener('keydown', event => {
     }
 
 });
-
-
 // ==========================================================
 // MODAL FEEDBACK PERMINTAAN PENGANTARAN
 // ==========================================================

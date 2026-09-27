@@ -27,3 +27,35 @@ body {
 *::after {
     box-sizing: border-box;
 }
+
+.customer-logout-form {
+    margin: 0;
+    padding: 0;
+}
+
+.customer-logout-button {
+    min-width: 94px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border: 1px solid var(--sp-blue-dark);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--sp-blue-dark);
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s ease,
+                color .2s ease,
+                transform .2s ease,
+                box-shadow .2s ease;
+}
+
+.customer-logout-button:hover {
+    background: var(--sp-blue-dark);
+    color: var(--sp-white);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(23, 75, 122, .15);
+}

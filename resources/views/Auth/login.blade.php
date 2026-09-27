@@ -297,23 +297,29 @@
                     </div>
 
 
-                    {{-- Remember --}}
-                    <div class="login-options">
+                   <div class="login-options">
 
-                        <label class="remember-label">
+    <label class="remember-label">
 
-                            <input
-                                type="checkbox"
-                                name="remember"
-                                value="1"
-                            >
+        <input
+            type="checkbox"
+            name="remember"
+            value="1"
+        >
 
-                            <span>Ingat saya</span>
+        <span>Ingat saya</span>
+    </label>
 
-                        </label>
+    <a
+        href="{{ route('password.request') }}"
+        class="forgot-password-link"
+    >
+        Lupa password?
+    </a>
 
-                        
-                    </div>
+</div>
+
+
 
 
                     {{-- Login Button --}}

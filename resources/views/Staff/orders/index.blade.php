@@ -6,11 +6,14 @@
 @vite([
     'resources/css/app.css',
     'resources/css/staff/orders.css',
+    'resources/css/staff/order-services.css',
     'resources/js/app.js',
     'resources/js/staff/orders/create-order-modal.js',
     'resources/js/staff/orders/order-status.js',
     'resources/js/staff/orders/payment-validation-modal.js',
-    'resources/js/staff/orders/order-filter.js'
+    'resources/js/staff/orders/order-filter.js',
+    'resources/css/staff/order-location-modal.css',
+    'resources/js/staff/orders/order-location-modal.js'
 ])
 
 <div class="order-page">
@@ -85,13 +88,35 @@
 >
         </div>
 
-       <select id="orderStatusFilter" class="order-filter-select">
-            <option value="">Semua Status</option>
-            <option value="Dalam Antrian">Dalam Antrian</option>
-            <option value="Proses">Proses</option>
-            <option value="Siap Dijemput">Siap Dijemput</option>
-            <option value="Siap Diantar">Siap Diantar</option>
-        </select>
+<select
+    id="orderStatusFilter"
+    name="status"
+    class="order-filter-select"
+>
+    <option value="" {{ request('status') == '' ? 'selected' : '' }}>
+        Semua Status
+    </option>
+
+    <option value="Dalam Antrian" {{ request('status') == 'Dalam Antrian' ? 'selected' : '' }}>
+        Dalam Antrian
+    </option>
+
+    <option value="Proses" {{ request('status') == 'Proses' ? 'selected' : '' }}>
+        Proses
+    </option>
+
+    <option value="Siap Dijemput" {{ request('status') == 'Siap Dijemput' ? 'selected' : '' }}>
+        Siap Dijemput
+    </option>
+
+    <option value="Siap Diantar" {{ request('status') == 'Siap Diantar' ? 'selected' : '' }}>
+        Siap Diantar
+    </option>
+
+    <option value="Selesai" {{ request('status') == 'Selesai' ? 'selected' : '' }}>
+        Selesai
+    </option>
+</select>
 
 
         <button
@@ -106,6 +131,15 @@
 
 </div>
 
+
+        {{-- PESAN HASIL PENCARIAN KOSONG --}}
+        <div
+            id="orderSearchNoResult"
+            class="order-search-no-result"
+            style="display: none;"
+        >
+            Pesanan atas nama <strong id="orderSearchKeyword"></strong> tidak ditemukan.
+        </div>
 
         <div class="order-table-wrapper">
 
@@ -284,28 +318,60 @@
             Siap Diantar
         </span>
 
+        @elseif ($order->status === 'Selesai')
+
+    <span class="order-status order-status-completed">
+        Selesai
+    </span>
+
     @endif
 
 </td>
 
 {{-- Permintaan --}}
 <td>
-    @if ($order->pickup_requested)
-        <span class="order-request order-request-pickup">
-            Ambil sendiri
-        </span>
-    @elseif ($order->delivery_requested)
-        <span class="order-request order-request-delivery">
-            Minta diantar
-        </span>
-    @else
-        <span class="order-request-empty">
-            —
-        </span>
-    @endif
+ @if ($order->pickup_requested)
+
+    <span class="order-request order-request-pickup">
+        Ambil sendiri
+    </span>
+
+@elseif ($order->delivery_requested || $order->status === 'Siap Diantar')
+
+    <div class="order-request-delivery-wrapper">
+
+        @if ($order->delivery_requested)
+            <span class="order-request order-request-delivery">
+                Minta diantar
+            </span>
+        @else
+            <span class="order-request order-request-delivery">
+                Siap diantar
+            </span>
+        @endif
+
+        <button
+            type="button"
+            class="order-location-button"
+            data-order-location-button
+            data-customer-name="{{ $order->customer->name }}"
+             data-customer-phone="{{ $order->customer->user->phone ?? '' }}"
+            data-customer-address="{{ $order->customer->address ?? '' }}"
+            data-maps-link="{{ $order->customer->maps_link ?? '' }}"
+        >
+            Lihat Lokasi
+        </button>
+
+    </div>
+
+@else
+
+    <span class="order-request-empty">
+        —
+    </span>
+
+@endif
 </td>
-
-
                             {{-- Staff --}}
                             <td>
                                 {{ $order->createdByStaff->name ?? '-' }}
@@ -367,7 +433,7 @@
                         <tr>
 
                             <td
-                                colspan="9"
+                                colspan="10"
                                 class="order-empty"
                             >
                                 Belum ada order yang perlu diproses.
@@ -583,5 +649,161 @@
 
 </div>
 
+{{-- ==========================================
+    MODAL DETAIL PELANGGAN ORDER
+========================================== --}}
+<div
+    id="orderLocationModal"
+    class="order-location-modal"
+    aria-hidden="true"
+>
+    <div
+        class="order-location-modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="orderLocationModalTitle"
+    >
+
+        {{-- HEADER --}}
+        <div class="order-location-modal-header">
+
+            <div class="order-location-modal-heading">
+
+                <span class="order-location-modal-label">
+                    DETAIL PELANGGAN
+                </span>
+
+                <h2 id="orderLocationModalTitle">
+                    Informasi Pelanggan
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                id="closeOrderLocationModal"
+                class="order-location-modal-close"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        {{-- BODY --}}
+        <div class="order-location-modal-body">
+
+            {{-- NAMA --}}
+            <div class="order-location-detail">
+
+                <div class="order-location-detail-icon"></div>
+
+                <div class="order-location-detail-content">
+
+                    <span class="order-location-detail-label">
+                        Nama Pelanggan
+                    </span>
+
+                    <strong
+                        id="orderLocationCustomerName"
+                        class="order-location-detail-value"
+                    >
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            {{-- NOMOR HP --}}
+            <div class="order-location-detail">
+
+               
+
+                <div class="order-location-detail-content">
+
+                    <span class="order-location-detail-label">
+                        Nomor WhatsApp
+                    </span>
+
+                    <a
+                        href="#"
+                        id="orderLocationCustomerPhone"
+                        class="order-location-phone"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        -
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            {{-- ALAMAT --}}
+            <div class="order-location-detail">
+
+                <div class="order-location-detail-icon">
+                    
+                </div>
+
+                <div class="order-location-detail-content">
+
+                    <span class="order-location-detail-label">
+                        Alamat
+                    </span>
+
+                    <p
+                        id="orderLocationCustomerAddress"
+                        class="order-location-address"
+                    >
+                        -
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            {{-- GOOGLE MAPS --}}
+            <div
+                id="orderLocationMapsWrapper"
+                class="order-location-maps-wrapper"
+                style="display: none;"
+            >
+
+                <a
+                    href="#"
+                    id="orderLocationMapsLink"
+                    class="order-location-maps-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span>Buka di Google Maps</span>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        {{-- FOOTER --}}
+        <div class="order-location-modal-footer">
+
+            <button
+                type="button"
+                id="closeOrderLocationModalButton"
+                class="order-location-modal-footer-button"
+            >
+                Tutup
+            </button>
+
+        </div>
+
+    </div>
+</div>
 @endsection
 

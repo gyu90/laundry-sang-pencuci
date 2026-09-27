@@ -20,48 +20,128 @@ class CustomerController extends Controller
      */
 
     
-    public function index()
-    {
-
-    
-     $customers = Customer::with([
+public function index(Request $request)
+{
+    $customers = Customer::with([
         'user',
         'createdByStaff'
     ])
+        ->when($request->filled('search'), function ($query) use ($request) {
+
+            $search = trim($request->search);
+
+            $query->where(function ($query) use ($search) {
+
+                // Cari berdasarkan nama customer
+                $query->where('name', 'like', '%' . $search . '%')
+
+                    // ATAU cari berdasarkan nomor HP
+                    ->orWhereHas('user', function ($query) use ($search) {
+                        $query->where('phone', 'like', '%' . $search . '%');
+                    });
+
+            });
+
+        })
         ->latest()
-        ->paginate(5);
+        ->paginate(5)
+        ->withQueryString();
 
     return view('staff.customers.index', compact('customers'));
-    }
+}
+
+
+public function show(Request $request, Customer $customer)
+{
+    $orders = $customer->orders()
+        ->with([
+            'items.servicePackage',
+            'createdByStaff'
+        ])
+
+        // PENCARIAN NOMOR ORDER
+        ->when($request->filled('order_number'), function ($query) use ($request) {
+
+            $orderNumber = strtoupper(trim($request->order_number));
+
+            // Hilangkan prefix ORD-
+            $orderId = str_replace('ORD-', '', $orderNumber);
+
+            // Pastikan yang dicari berupa angka
+            if (is_numeric($orderId)) {
+                $query->where('id', (int) $orderId);
+            }
+
+        })
+
+        // FILTER TANGGAL MULAI
+        ->when($request->filled('start_date'), function ($query) use ($request) {
+            $query->whereDate('order_date', '>=', $request->start_date);
+        })
+
+        // FILTER TANGGAL SAMPAI
+        ->when($request->filled('end_date'), function ($query) use ($request) {
+            $query->whereDate('order_date', '<=', $request->end_date);
+        })
+
+        ->latest('order_date')
+        ->paginate(5)
+        ->withQueryString();
+
+    return view('staff.customers.show', compact(
+        'customer',
+        'orders'
+    ));
+}
 
 public function store(Request $request)
 {
-   
     $validated = $request->validate([
-    'name' => ['required', 'string', 'max:100'],
-    'phone' => [
-        'required',
-        'string',
-        'max:20',
-        'unique:users,phone',
-    ],
-    'email' => [
-        'nullable',
-        'email',
-        'max:100',
-    ],
-    'address' => [
-    'nullable',
-    'string',
-],
 
-'maps_link' => [
-    'nullable',
-    'url',
-],
+        'name' => [
+            'required',
+            'string',
+            'max:100',
+        ],
 
-]);
-    
+        'phone' => [
+            'required',
+            'string',
+            'digits_between:10,15',
+            'regex:/^[0-9]+$/',
+            'unique:users,phone',
+        ],
+
+        'email' => [
+            'nullable',
+            'email',
+            'max:100',
+        ],
+
+        'address' => [
+            'nullable',
+            'string',
+        ],
+
+        'maps_link' => [
+            'nullable',
+            'url',
+        ],
+
+    ], [
+
+        'name.required' => 'Nama customer wajib diisi.',
+
+        'phone.required' => 'Nomor HP wajib diisi.',
+        'phone.regex' => 'Nomor HP hanya boleh berisi angka.',
+        'phone.digits_between' => 'Nomor HP harus terdiri dari 10 sampai 15 digit.',
+        'phone.unique' => 'Nomor HP sudah digunakan.',
+
+        'email.email' => 'Format email tidak valid.',
+
+        'maps_link.url' => 'Format link Google Maps tidak valid.',
+
+    ]);
 
     DB::transaction(function () use ($validated) {
 
@@ -69,29 +149,26 @@ public function store(Request $request)
         // 1. BUAT AKUN USER CUSTOMER
         // ======================================================
 
-       $user = User::create([
-    'phone' => $validated['phone'],
-    'password' => Hash::make('pelanggan12345'),
-    'user_type' => 'customer',
-    'is_active' => true,
-]);
-
+        $user = User::create([
+            'phone' => $validated['phone'],
+            'password' => Hash::make('pelanggan12345'),
+            'user_type' => 'customer',
+            'is_active' => true,
+        ]);
 
 
         // ======================================================
         // 2. BUAT DATA CUSTOMER
         // ======================================================
 
-Customer::create([
-    'user_id' => $user->id,
-    'created_by_staff_id' => auth()->user()->staff->id,
-    'name' => $validated['name'],
-    'email' => $validated['email'] ?? null,
-    'address' => $validated['address'] ?? null,
-    'maps_link' => $validated['maps_link'] ?? null,
-]);
-
-
+        Customer::create([
+            'user_id' => $user->id,
+            'created_by_staff_id' => auth()->user()->staff->id,
+            'name' => $validated['name'],
+            'email' => $validated['email'] ?? null,
+            'address' => $validated['address'] ?? null,
+            'maps_link' => $validated['maps_link'] ?? null,
+        ]);
 
     });
 
@@ -99,7 +176,6 @@ Customer::create([
         ->route('staff.customers.index')
         ->with('success', 'Customer berhasil ditambahkan.');
 }
-
 public function edit(Customer $customer)
 {
     return response()->json([
@@ -116,12 +192,13 @@ public function update(Request $request, Customer $customer)
 {
     $validated = $request->validate([
         'name' => ['required', 'string', 'max:100'],
-        'phone' => [
-            'required',
-            'string',
-            'max:20',
-            Rule::unique('users', 'phone')->ignore($customer->user_id),
-        ],
+       'phone' => [
+    'required',
+    'string',
+    'digits_between:10,15',
+    'regex:/^[0-9]+$/',
+    Rule::unique('users', 'phone')->ignore($customer->user_id),
+],
         'email' => [
             'nullable',
             'email',

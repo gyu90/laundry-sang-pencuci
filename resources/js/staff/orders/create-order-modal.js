@@ -714,3 +714,145 @@ voucherSelect.addEventListener('change', () => {
     });
 
 });
+
+// ==========================================================
+// VALIDASI CUSTOMER & LAYANAN
+// ==========================================================
+
+const createOrderForm = document.getElementById('createOrderForm');
+const customerIdInput = document.getElementById('customer_id');
+const customerSearchInput = document.getElementById('customerSearch');
+const customerError = document.getElementById('customerError');
+
+const orderServiceList = document.getElementById('orderServiceList');
+const serviceError = document.getElementById('serviceError');
+
+if (createOrderForm) {
+
+    createOrderForm.addEventListener('submit', function (event) {
+
+        let isValid = true;
+
+
+        // ==================================================
+        // VALIDASI CUSTOMER
+        // ==================================================
+
+        if (!customerIdInput || !customerIdInput.value.trim()) {
+
+            isValid = false;
+
+            if (customerError) {
+                customerError.style.display = 'block';
+            }
+
+            if (customerSearchInput) {
+                customerSearchInput.classList.add('input-error');
+                customerSearchInput.focus();
+            }
+
+        } else {
+
+            if (customerError) {
+                customerError.style.display = 'none';
+            }
+
+            if (customerSearchInput) {
+                customerSearchInput.classList.remove('input-error');
+            }
+        }
+
+
+        // ==================================================
+        // VALIDASI LAYANAN
+        // ==================================================
+
+        if (!orderServiceList || orderServiceList.children.length === 0) {
+
+            isValid = false;
+
+            if (serviceError) {
+                serviceError.style.display = 'block';
+            }
+
+        } else {
+
+            if (serviceError) {
+                serviceError.style.display = 'none';
+            }
+        }
+
+
+        // ==================================================
+        // JIKA ADA YANG BELUM DIISI
+        // ==================================================
+
+        if (!isValid) {
+            event.preventDefault();
+        }
+
+    });
+
+
+    // ======================================================
+    // HILANGKAN ERROR CUSTOMER SAAT CUSTOMER DIPILIH
+    // ======================================================
+
+    document.addEventListener('click', function (event) {
+
+        const customerItem =
+            event.target.closest('.customer-search-item');
+
+        if (!customerItem) {
+            return;
+        }
+
+        setTimeout(() => {
+
+            if (
+                customerIdInput &&
+                customerIdInput.value.trim() !== ''
+            ) {
+
+                if (customerError) {
+                    customerError.style.display = 'none';
+                }
+
+                if (customerSearchInput) {
+                    customerSearchInput.classList.remove(
+                        'input-error'
+                    );
+                }
+
+            }
+
+        }, 50);
+
+    });
+
+
+    // ======================================================
+    // HILANGKAN ERROR LAYANAN SAAT LAYANAN DITAMBAHKAN
+    // ======================================================
+
+    if (orderServiceList) {
+
+        const serviceObserver = new MutationObserver(() => {
+
+            if (orderServiceList.children.length > 0) {
+
+                if (serviceError) {
+                    serviceError.style.display = 'none';
+                }
+
+            }
+
+        });
+
+        serviceObserver.observe(orderServiceList, {
+            childList: true
+        });
+
+    }
+
+}

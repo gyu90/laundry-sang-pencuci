@@ -212,10 +212,11 @@ body {
 
 .main-content {
     margin-left: 240px;
-
     width: calc(100% - 240px);
-
+    max-width: calc(100% - 240px);
+    min-width: 0;
     padding: 28px 32px;
+    overflow-x: hidden;
 }
 
 
@@ -344,9 +345,10 @@ body {
 
 .summary-section {
     display: grid;
-    grid-template-columns: 1.3fr repeat(4, 1fr);
+    grid-template-columns: minmax(0, 1.3fr) repeat(4, minmax(0, 1fr));
     gap: 12px;
     width: 100%;
+    min-width: 0;
     margin-bottom: 32px;
 }
 
@@ -594,6 +596,12 @@ th:last-child {
    RESPONSIVE
 ========================= */
 
+@media (max-width: 1200px) {
+    .summary-section {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 900px) {
 
     .sidebar {
@@ -602,14 +610,13 @@ th:last-child {
 
     .main-content {
         margin-left: 200px;
-
         width: calc(100% - 200px);
-
+        max-width: calc(100% - 200px);
         padding: 22px;
     }
 
     .summary-section {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
 }
@@ -626,6 +633,9 @@ th:last-child {
         width: 100%;
 
         padding: 18px;
+
+       max-width: 100%;
+       min-width: 0;
     }
 
     .topbar {
@@ -1086,4 +1096,9 @@ th:last-child {
     padding: 18px 24px;
 
     border-top: 1px solid #edf0f4;
+}
+
+.payment-validation-modal-footer form {
+    margin: 0;
+    padding: 0;
 }

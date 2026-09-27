@@ -7,7 +7,10 @@
     'resources/css/staff/customers.css',
     'resources/js/app.js',
     'resources/js/customer/account.js',
-    'resources/js/staff/customer-maps.js'
+    'resources/js/staff/customer-maps.js',
+    'resources/js/staff/customers.js'
+    
+
 ])
 
 <div class="customer-page">
@@ -32,18 +35,44 @@
 
 
     {{-- Tabel Customer --}}
-    <div class="customer-card">
+   <div class="customer-card-header">
 
-        <div class="customer-card-header">
+    <div>
+        <h2>Daftar Customer</h2>
 
-            <div>
-                <h2>Daftar Customer</h2>
-                <p>
-                    Data pelanggan yang terdaftar dalam sistem.
-                </p>
-            </div>
+        <p>
+            Data pelanggan yang terdaftar dalam sistem.
+        </p>
+    </div>
+
+    {{-- Pencarian Customer --}}
+    <form
+        method="GET"
+        action="{{ route('staff.customers.index') }}"
+        class="customer-search-form"
+    >
+
+        <div class="customer-search-wrapper">
+
+            <img
+    src="{{ asset('images/search.png') }}"
+    alt="Cari"
+    class="customer-search-icon"
+>
+
+            <input
+                type="text"
+                name="search"
+                value="{{ request('search') }}"
+                placeholder="Cari nama atau nomor HP..."
+                class="customer-search-input"
+            >
 
         </div>
+
+    </form>
+
+</div>
 
 
         <div class="customer-table-wrapper">
@@ -55,9 +84,8 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>No. HP</th>
-                        <th>Email</th>
                         <th>Alamat</th>
-                        <th>Lokasi</th>
+                        <th>Maps Lokasi</th>
                         <th>Terdaftar</th>
                         <th>Dibuat Oleh</th>
                         <th>Aksi</th>
@@ -84,13 +112,6 @@
                                 {{ $customer->user->phone }}
                             </td>
 
-                            <td>
-                                {{ $customer->email ?? '-' }}
-                            </td>
-
-                            <td>
-                                {{ $customer->address }}
-                            </td>
 
                            <td>
     {{ $customer->address }}
@@ -119,15 +140,31 @@
     {{ $customer->registered_at?->format('d/m/Y') }}
 </td>
 
-                            <td>
-    <button
-        type="button"
-        class="customer-edit-button"
-        data-customer-id="{{ $customer->id }}"
-    >
-        Edit
-    </button>
+<td>
+    {{ $customer->createdByStaff?->name ?? '-' }}
 </td>
+
+<td>
+    <div class="customer-action-buttons">
+
+        <a
+            href="{{ route('staff.customers.show', $customer) }}"
+            class="customer-detail-button"
+        >
+            Detail
+        </a>
+
+        <button
+            type="button"
+            class="customer-edit-button"
+            data-customer-id="{{ $customer->id }}"
+        >
+            Edit
+        </button>
+
+    </div>
+</td>
+
 
                         </tr>
 
@@ -136,7 +173,7 @@
                         <tr>
 
                             <td
-                                colspan="9"
+                                colspan="8"
                                 class="customer-empty"
                             >
                                 Belum ada customer yang terdaftar.
@@ -208,10 +245,10 @@
 
         {{-- Form --}}
         <form
-            id="addCustomerForm"
-            action="{{ route('staff.customers.store') }}"
-            method="POST"
-        >
+    id="addCustomerForm"
+    action="{{ route('staff.customers.store') }}"
+    method="POST"
+>
 
             @csrf
             @if ($errors->any())
@@ -250,21 +287,27 @@
 
 
                 {{-- Nomor HP --}}
-                <div class="form-group">
+               <div class="form-group">
 
-                    <label for="phone">
-                        No. HP
-                    </label>
+    <label for="phone">
+        No. HP
+    </label>
 
-                    <input
-                        type="text"
-                        id="phone"
-                        name="phone"
-                        placeholder="Contoh: 081234567890"
-                        required
-                    >
+<input
+    type="text"
+    id="phone"
+    name="phone"
+    placeholder="Contoh: 081234567890"
+    inputmode="numeric"
+    minlength="10"
+    maxlength="15"
+    pattern="[0-9]+"
+    required
+    oninvalid="setPhoneValidationMessage(this)"
+    oninput="this.setCustomValidity('')"
+>
 
-                </div>
+</div>
 
 
                 {{-- Email --}}

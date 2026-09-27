@@ -154,11 +154,19 @@
         width="100%"
         height="300"
         style="border:0;"
-        allowfullscreen=""
+        allowfullscreen
         loading="lazy"
         referrerpolicy="strict-origin-when-cross-origin"
         title="Lokasi Sang Pencuci"
     ></iframe>
+
+    <a
+        href="https://www.google.com/maps/search/?api=1&query=3.6127555,98.6453392"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="customer-footer-map-link"
+        aria-label="Buka lokasi Sang Pencuci di Google Maps"
+    ></a>
 
 </div>
 

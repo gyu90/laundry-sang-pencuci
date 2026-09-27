@@ -14,29 +14,39 @@ class CustomerAccountController extends Controller
         $customer = $user->customer;
 
         // Pesanan yang masih aktif
-$activeOrder = $customer?->orders()
+$activeOrders = $customer?->orders()
     ->with([
         'items.servicePackage',
         'payment',
     ])
     ->where('status', '!=', 'Selesai')
     ->latest('order_date')
-    ->first();
+    ->get();
 
-        // 3 pesanan selesai terbaru
-        $orderHistory = $customer?->orders()
-            ->with('items.servicePackage')
-            ->where('status', 'Selesai')
-            ->latest('order_date')
-            ->take(3)
-            ->get();
+        // 3 pesanan terbaru dari semua status
+$orderHistory = $customer?->orders()
+    ->with('items.servicePackage')
+    ->latest('order_date')
+    ->take(3)
+    ->get();
 
-        return view('customer.account', compact(
-            'user',
-            'customer',
-            'activeOrder',
-            'orderHistory'
-        ));
+
+$pickupSuccessOrder = null;
+
+if (session('pickup_order_id')) {
+    $pickupSuccessOrder = $customer?->orders()
+        ->with('payment')
+        ->where('id', session('pickup_order_id'))
+        ->first();
+}
+
+return view('customer.account', compact(
+    'user',
+    'customer',
+    'activeOrders',
+    'orderHistory',
+    'pickupSuccessOrder'
+));
     }
 
 
@@ -46,13 +56,12 @@ public function orderHistory()
     $user = auth()->user();
     $customer = $user->customer;
 
-    $orderHistory = $customer
-        ? $customer->orders()
-            ->with('items.servicePackage')
-            ->where('status', 'Selesai')
-            ->latest('order_date')
-            ->paginate(5)
-        : collect();
+$orderHistory = $customer
+    ? $customer->orders()
+        ->with('items.servicePackage')
+        ->latest('order_date')
+        ->paginate(5)
+    : collect();
 
     return view('customer.order-history', compact(
         'user',
@@ -77,8 +86,10 @@ public function orderHistory()
 
 return redirect()
     ->route('customer.account')
-    ->with('pickup_success', true);
-}
+    ->with('pickup_success', true)
+    ->with('pickup_order_id', $orderId);
+
+    }
 
 
 public function deliveryRequest($orderId)

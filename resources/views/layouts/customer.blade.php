@@ -25,11 +25,13 @@
 </title>
 
     @vite([
-        'resources/css/customer.css',
-        'resources/js/customer/navigation.js',
-        'resources/css/customer/account.css',
-        'resources/js/customer/services-carousel.js',
-    ])
+    'resources/css/customer.css',
+    'resources/js/customer/navigation.js',
+    'resources/css/customer/account.css',
+    'resources/css/customer/orders.css',
+    'resources/css/customer/orders-mobile.css',
+    'resources/js/customer/services-carousel.js',
+])
 
     @stack('styles')
 

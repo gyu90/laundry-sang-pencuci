@@ -5,7 +5,6 @@
 @section('content')
 
 
-
 {{-- =====================================================
      HERO
 ===================================================== --}}
@@ -27,15 +26,15 @@
 
 <div class="home-hero-content">
 
- @auth
+@if(auth()->check() && auth()->user()->user_type === 'customer')
     <span class="home-hero-greeting">
-        Halo, {{ auth()->user()->customer->name }} 👋
+        Halo, {{ auth()->user()->customer?->name ?? auth()->user()->username }} 👋
     </span>
 @else
     <span class="home-eyebrow">
         SANG PENCUCI
     </span>
-@endauth
+@endif
 
     <h1>
         <span class="hero-line-one">
@@ -60,19 +59,27 @@
 
             <div class="home-hero-actions">
 
-                <a
-                    href="#layanan"
-                    class="home-button-primary"
-                >
-                    Lihat Layanan
-                </a>
+    <a
+        href="#layanan"
+        class="home-button-primary"
+    >
+        Lihat Layanan
+    </a>
 
-                <a href="{{ route('customer.promo') }}"
-   class="home-button-secondary">
-    Lihat Promo
-</a>
+    <a
+        href="{{ route('customer.promo') }}"
+        class="home-button-secondary"
+    >
+        Lihat Promo
+    </a>
 
-            </div>
+    @if(auth()->check() && auth()->user()->user_type === 'customer')
+
+
+
+    @endif
+
+</div>
 
         </div>
 
@@ -679,7 +686,8 @@
      ACTIVE ORDER
      HANYA UNTUK CUSTOMER LOGIN
 ===================================================== --}}
-@auth
+
+@if(auth()->check() && auth()->user()->user_type === 'customer')
 
     @if(isset($activeOrder) && $activeOrder)
 
@@ -798,6 +806,6 @@
 
     @endif
 
-@endauth
+@endif
   @include('customer.components.whatsapp-float')
 @endsection

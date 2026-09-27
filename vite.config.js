@@ -13,6 +13,8 @@ export default defineConfig({
                 // CUSTOMER
                 'resources/css/customer.css',
                 'resources/css/customer/account.css',
+                'resources/css/customer/orders.css',
+                'resources/css/customer/orders-mobile.css',
                 'resources/js/customer/navigation.js',
                 'resources/js/customer/services-carousel.js',
                 'resources/js/customer/account.js',
@@ -29,6 +31,10 @@ export default defineConfig({
                 // STAFF
                 'resources/css/staff.css',
                 'resources/css/staff/customers.css',
+                'resources/css/staff/customer-detail.css',
+                'resources/css/staff/order-services.css',
+                'resources/css/staff/order-location-modal.css',
+                'resources/js/staff/orders/order-location-modal.js',
                 'resources/css/staff/orders.css',
                 'resources/css/staff/loyalty.css',
                 'resources/css/staff/history.css',

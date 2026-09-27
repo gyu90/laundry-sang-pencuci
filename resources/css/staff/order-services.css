@@ -1,0 +1,326 @@
+/* ==========================================================
+   TAMBAH LAYANAN
+   ========================================================== */
+
+.order-add-service {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #111827;
+    cursor: pointer;
+}
+
+.order-add-service:hover {
+    text-decoration: underline;
+}
+
+
+/* ==========================================================
+   DAFTAR LAYANAN
+   ========================================================== */
+
+.order-service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+
+    /* Area layanan diperbesar */
+    max-height: 280px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-right: 4px;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   ITEM LAYANAN
+   ========================================== */
+
+.order-service-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 10px 12px;
+    padding: 12px;
+    border: 1px solid #d8e3f5;
+    border-radius: 12px;
+    background: #ffffff;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.order-service-row .service-field label,
+.order-service-row .service-quantity-group label {
+    display: none;
+}
+
+
+/* ==========================================
+   FIELD LAYANAN & PAKET
+   ========================================== */
+
+.order-service-row .service-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.order-service-row .service-field label,
+.order-service-row .service-quantity-group label {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #7182a0;
+}
+
+.order-service-row .service-field select {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #d4dfef;
+    border-radius: 9px;
+    background: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: #263b63;
+    outline: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.order-service-row .service-field select:focus {
+    border-color: #5d87d9;
+    box-shadow:
+        0 0 0 3px rgba(93, 135, 217, 0.10);
+}
+
+.order-service-row .service-field select:disabled {
+    background: #f6f8fc;
+    color: #9aa8bf;
+}
+
+
+/* ==========================================
+   BARIS BAWAH
+   ========================================== */
+
+.order-service-row .service-bottom-row {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+
+/* ==========================================
+   QUANTITY
+   ========================================== */
+
+.order-service-row .service-quantity-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.order-service-row .quantity-control {
+    display: inline-flex;
+    align-items: center;
+    height: 36px;
+    border: 1px solid #d4dfef;
+    border-radius: 9px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.order-service-row .quantity-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: #f3f7ff;
+    color: #1456b8;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.order-service-row .quantity-btn:hover {
+    background: #e7f0ff;
+}
+
+.order-service-row .service-quantity-input {
+    width: 40px;
+    height: 34px;
+    padding: 0;
+    border: none;
+    border-left: 1px solid #d4dfef;
+    border-right: 1px solid #d4dfef;
+    background: #ffffff;
+    text-align: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #17366f;
+    outline: none;
+}
+
+.order-service-row .service-quantity-input::-webkit-inner-spin-button,
+.order-service-row .service-quantity-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.order-service-row .service-quantity-input {
+    appearance: textfield;
+}
+
+
+/* ==========================================
+   TOMBOL HAPUS
+   ========================================== */
+
+.order-service-row .order-remove-service {
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    border: 1px solid #efc2da;
+    border-radius: 9px;
+    background: #fff6fb;
+    color: #b21f75;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.order-service-row .order-remove-service:hover {
+    background: #fce8f2;
+    border-color: #df9fc0;
+    color: #99145f;
+}
+
+
+/* ==========================================
+   SERVICE SECTION
+   ========================================== */
+
+.order-service-section {
+    margin-bottom: 16px;
+    padding: 18px;
+    background: #eef5ff;
+    border: 1px solid #dce8fb;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================
+   HEADER LAYANAN
+   ========================================== */
+
+.order-service-section .order-section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+
+/* ==========================================
+   ICON LAYANAN
+   ========================================== */
+
+.order-service-section .order-section-icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #dcecff;
+    overflow: hidden;
+}
+
+.order-service-section .order-section-icon img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+}
+
+
+/* ==========================================
+   JUDUL LAYANAN
+   ========================================== */
+
+.order-service-section .order-section-header h3 {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #102a72;
+}
+
+
+/* ==========================================
+   TOMBOL TAMBAH LAYANAN
+   ========================================== */
+
+.order-service-section .order-add-service {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    padding: 10px 14px;
+    border: 1px dashed #74a9e8;
+    border-radius: 11px;
+    background: #e5f3ff;
+    color: #0758b8;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.order-service-section .order-add-service:hover {
+    background: #d9edff;
+    border-color: #518fd6;
+}
+
+.order-service-section .order-add-service-plus {
+    font-size: 21px;
+    line-height: 1;
+    font-weight: 400;
+}

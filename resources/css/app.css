@@ -12,3 +12,37 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+/* =========================================================
+   GLOBAL RESPONSIVE BASE
+   ========================================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+    max-width: 100%;
+}
+
+img {
+    height: auto;
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+}

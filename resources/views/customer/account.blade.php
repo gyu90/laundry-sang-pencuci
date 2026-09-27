@@ -26,185 +26,214 @@
 
 </div>
 
-    {{-- =====================================================
+  {{-- =====================================================
      PESANAN AKTIF
 ====================================================== --}}
 <section class="account-active-order">
 
     <div class="active-order-header">
-
         <div>
+            <span class="active-order-label">
+                PESANAN AKTIF
+            </span>
 
-            @if($activeOrder)
+            <h2>
+                {{ $activeOrders?->count() ?? 0 }} pesanan sedang berjalan
+            </h2>
 
-                <span class="active-order-label">
-                    PESANAN AKTIF · #{{ $activeOrder->id }}
-                </span>
-
-                <h2>
-                    @foreach($activeOrder->items as $item)
-                        {{ $item->servicePackage?->package_name ?? 'Layanan' }}@if(!$loop->last), @endif
-                    @endforeach
-                </h2>
-
-                <span class="active-order-count">
-                    {{ $activeOrder->items->count() }} layanan
-                </span>
-
-            @else
-
-                <span class="active-order-label">
-                    PESANAN AKTIF
-                </span>
-
-                <h2>
-                    Tidak ada pesanan aktif
-                </h2>
-
-                <span class="active-order-count">
-                    0 layanan
-                </span>
-
-            @endif
-
+            <span class="active-order-count">
+                {{ $activeOrders?->count() ?? 0 }} pesanan
+            </span>
         </div>
-
     </div>
 
 
-          {{-- =====================================================
-     PROGRESS PESANAN
-====================================================== --}}
-@php
-    $statusOrder = [
-        'Dalam Antrian',
-        'Proses',
-        'Tahap Pengantaran',
-        'Selesai',
-    ];
+    @if($activeOrders && $activeOrders->count())
 
-    $currentIndex = null;
+        @foreach($activeOrders as $activeOrder)
 
-    if ($activeOrder) {
+            {{-- =================================================
+                 SATU KARTU PESANAN AKTIF
+            ================================================== --}}
+            <div class="active-order-card">
 
-        if ($activeOrder->status === 'Siap Dijemput') {
-            $currentIndex = 2;
-        }
+                <div class="active-order-card-header">
 
-        elseif ($activeOrder->status === 'Siap Diantar') {
-            $currentIndex = 2;
-        }
+                    <div>
+                        <span class="active-order-label">
+                            PESANAN AKTIF · #{{ $activeOrder->id }}
+                        </span>
 
-        else {
-            $currentIndex = array_search(
-                $activeOrder->status,
-                $statusOrder
-            );
-        }
-    }
-@endphp
+                        <h2>
+                            @foreach($activeOrder->items as $item)
+                                {{ $item->servicePackage?->package_name ?? 'Layanan' }}
+                                @if(!$loop->last), @endif
+                            @endforeach
+                        </h2>
+                    </div>
 
-<div class="order-progress">
+                    <span class="active-order-count">
+                        {{ $activeOrder->items->count() }} layanan
+                    </span>
 
-    @foreach($statusOrder as $index => $step)
+                </div>
 
-        @php
-            $isCompleted = $currentIndex !== null
-                && $index < $currentIndex;
 
-            $isCurrent = $currentIndex !== null
-                && $index === $currentIndex;
-        @endphp
+                {{-- =================================================
+                     PROGRESS PESANAN
+                ================================================== --}}
+                @php
+                    $statusOrder = [
+                        'Dalam Antrian',
+                        'Proses',
+                        'Tahap Pengantaran',
+                        'Selesai',
+                    ];
 
-        <div class="order-progress-step
-            {{ $isCompleted ? 'completed' : '' }}
-            {{ $isCurrent ? 'current' : '' }}"
-        >
+                    $currentIndex = null;
 
-            <div class="order-progress-dot">
-                @if($isCompleted)
-                    ✓
+                    if ($activeOrder->status === 'Siap Dijemput') {
+                        $currentIndex = 2;
+                    } elseif ($activeOrder->status === 'Siap Diantar') {
+                        $currentIndex = 2;
+                    } else {
+                        $currentIndex = array_search(
+                            $activeOrder->status,
+                            $statusOrder
+                        );
+                    }
+                @endphp
+
+
+                <div class="order-progress">
+
+                    @foreach($statusOrder as $index => $step)
+
+                        @php
+                            $isCompleted = $currentIndex !== null
+                                && $index < $currentIndex;
+
+                            $isCurrent = $currentIndex !== null
+                                && $index === $currentIndex;
+                        @endphp
+
+                        <div class="order-progress-step
+                            {{ $isCompleted ? 'completed' : '' }}
+                            {{ $isCurrent ? 'current' : '' }}"
+                        >
+
+                            <div class="order-progress-dot">
+                                @if($isCompleted)
+                                    ✓
+                                @endif
+                            </div>
+
+                            <span>
+                                @if($index === 2)
+
+                                    @if($activeOrder->status === 'Siap Diantar')
+                                        Dalam Proses Pengantaran
+                                    @else
+                                        Siap Dijemput
+                                    @endif
+
+                                @else
+                                    {{ $step }}
+                                @endif
+                            </span>
+
+                        </div>
+
+
+                        @if(!$loop->last)
+
+                            <div class="order-progress-line
+                                {{ $currentIndex !== null && $index < $currentIndex ? 'completed' : '' }}"
+                            ></div>
+
+                        @endif
+
+                    @endforeach
+
+                </div>
+
+
+                {{-- =================================================
+                     PILIHAN PENGAMBILAN / PENGANTARAN
+                ================================================== --}}
+                @if(
+                    $activeOrder->status === 'Siap Dijemput' &&
+                    !$activeOrder->pickup_requested &&
+                    !$activeOrder->delivery_requested
+                )
+
+                    <div class="active-order-action">
+
+                        <h3>
+                            Pesanan sudah siap!
+                            Mau diambil sendiri atau diantar?
+                        </h3>
+
+                        <div class="delivery-action-list">
+
+                            <button
+                                type="button"
+                                class="delivery-action-button delivery-action-primary open-delivery-request"
+                                data-order-id="{{ $activeOrder->id }}"
+                            >
+                                Minta diantar
+                            </button>
+
+
+                            <form
+                                action="{{ route('customer.order.pickup', $activeOrder->id) }}"
+                                method="POST"
+                            >
+                                @csrf
+
+                                <button
+                                    type="button"
+                                    class="delivery-action-button delivery-action-secondary open-pickup-confirm"
+                                    data-order-id="{{ $activeOrder->id }}"
+                                >
+                                    Ambil sendiri
+                                </button>
+                            </form>
+
+                        </div>
+
+                    </div>
+
                 @endif
+
             </div>
 
-<span>
-    @if($index === 2)
-
-        @if($activeOrder?->status === 'Siap Diantar')
-            Dalam Proses Pengantaran
-        @else
-            Siap Dijemput
-        @endif
+        @endforeach
 
     @else
-        {{ $step }}
+
+        {{-- =================================================
+             TIDAK ADA PESANAN AKTIF
+        ================================================== --}}
+        <div class="active-order-empty">
+
+            <span class="active-order-label">
+                PESANAN AKTIF
+            </span>
+
+            <h2>
+                Tidak ada pesanan aktif
+            </h2>
+
+            <span class="active-order-count">
+                0 pesanan
+            </span>
+
+        </div>
+
     @endif
-</span>
 
-
-        </div>
-
-        @if(!$loop->last)
-
-            <div class="order-progress-line
-                {{ $currentIndex !== null && $index < $currentIndex ? 'completed' : '' }}"
-            ></div>
-
-        @endif
-
-    @endforeach
-
-</div>
-           
-@if(
-    $activeOrder &&
-    $activeOrder->status === 'Siap Dijemput' &&
-    !$activeOrder->pickup_requested &&
-    !$activeOrder->delivery_requested
-)
-
-    <div class="active-order-action">
-
-        <h3>
-            Pesanan sudah siap!
-            Mau diambil sendiri atau diantar?
-        </h3>
-
-        <div class="delivery-action-list">
-
-<button
-    type="button"
-    id="openDeliveryRequest"
-    class="delivery-action-button delivery-action-primary"
->
-    Minta diantar
-</button>
-
-            <form
-    id="pickupOrderForm"
-    action="{{ route('customer.order.pickup', $activeOrder->id) }}"
-    method="POST"
->
-    @csrf
-
-    <button
-        type="button"
-        id="openPickupConfirm"
-        class="delivery-action-button delivery-action-secondary"
-    >
-        Ambil sendiri
-    </button>
-</form>
-
-        </div>
-
-    </div>
-
-@endif
-
-        </section>
-
-
+</section>
         {{-- =====================================================
      MODAL KONFIRMASI AMBIL SENDIRI
 ====================================================== --}}
@@ -251,7 +280,7 @@
 
         </div>
 
-      <div class="account-modal-actions">
+     <div class="account-modal-actions">
 
     <button
         type="button"
@@ -261,13 +290,21 @@
         Batal
     </button>
 
-    <button
-        type="button"
-        id="confirmPickup"
-        class="account-modal-button account-modal-save"
+    <form
+        id="pickupConfirmForm"
+        method="POST"
+        action=""
     >
-        Ya, Ambil Sendiri
-    </button>
+        @csrf
+
+        <button
+            type="submit"
+            id="confirmPickup"
+            class="account-modal-button account-modal-save"
+        >
+            Ya, Ambil Sendiri
+        </button>
+    </form>
 
 </div>
 
@@ -278,7 +315,6 @@
      MODAL KONFIRMASI MINTA DIANTAR
 ====================================================== --}}
 
-@if($activeOrder)
 <div
     id="deliveryConfirmModal"
     class="account-modal"
@@ -331,36 +367,36 @@
 
         </div>
 
-      <div class="account-modal-actions">
+        <div class="account-modal-actions">
 
-    <button
-        type="button"
-        id="cancelDeliveryConfirm"
-        class="account-modal-button account-modal-cancel"
-    >
-        Batal
-    </button>
+            <button
+                type="button"
+                id="cancelDeliveryConfirm"
+                class="account-modal-button account-modal-cancel"
+            >
+                Batal
+            </button>
 
-    <form
-        action="{{ route('customer.order.delivery', $activeOrder->id) }}"
-        method="POST"
-    >
-        @csrf
+            <form
+                id="deliveryConfirmForm"
+                action=""
+                method="POST"
+            >
+                @csrf
 
-        <button
-            type="submit"
-            id="confirmDeliveryRequest"
-            class="account-modal-button account-modal-save"
-        >
-            Ya, Minta Diantar
-        </button>
-    </form>
+                <button
+                    type="submit"
+                    id="confirmDeliveryRequest"
+                    class="account-modal-button account-modal-save"
+                >
+                    Ya, Minta Diantar
+                </button>
+            </form>
 
-</div>
+        </div>
 
     </div>
 </div>
-@endif
 
 {{-- =====================================================
      MODAL FEEDBACK PERMINTAAN PENGANTARAN
@@ -500,10 +536,10 @@
 {{-- =====================================================
      MODAL PERMINTAAN BERHASIL
 ====================================================== --}}
-@if(session('pickup_success') && $activeOrder)
+@if(session('pickup_success') && $pickupSuccessOrder)
 
     @php
-        $paymentStatus = $activeOrder->payment?->status ?? 'Belum Lunas';
+        $paymentStatus = $pickupSuccessOrder->payment?->status ?? 'Belum Lunas';
         $isPaid = $paymentStatus === 'Lunas';
     @endphp
 
@@ -554,7 +590,6 @@
                     untuk mengambil pesanan.
                 </p>
 
-
                 @if($isPaid)
 
                     <div class="pickup-payment-info">
@@ -583,7 +618,7 @@
                         </span>
 
                         <strong>
-                            Rp{{ number_format($activeOrder->final_amount, 0, ',', '.') }}
+                            Rp{{ number_format($pickupSuccessOrder->final_amount, 0, ',', '.') }}
                         </strong>
 
                     </div>

@@ -20,17 +20,24 @@ class OrderController extends Controller
     /**
      * Menampilkan daftar order yang masih aktif.
      */
-    public function index()
+public function index(Request $request)
 {
-   $orders = Order::with([
-    'customer',
-    'createdByStaff',
-    'items.servicePackage',
-    'payment',
-])
-->where('status', '!=', 'Selesai')
-->latest('order_date')
-->paginate(5);
+    $query = Order::with([
+        'customer',
+        'createdByStaff',
+        'items.servicePackage',
+        'payment',
+    ]);
+
+    // Jika memilih status tertentu, filter berdasarkan status tersebut
+    if ($request->filled('status')) {
+        $query->where('status', $request->status);
+    }
+
+    $orders = $query
+        ->latest('order_date')
+        ->paginate(5)
+        ->withQueryString();
 
     $customers = Customer::orderBy('name')->get();
 
@@ -40,24 +47,23 @@ class OrderController extends Controller
         ->get();
 
     $services = Service::where('is_active', true)
-    ->orderBy('service_name')
-    ->get();
+        ->orderBy('service_name')
+        ->get();
 
-$vouchers = Voucher::with([
+    $vouchers = Voucher::with([
         'program.freeServicePackage.service'
     ])
-    ->where('status', 'available')
-    ->where('expiry_at', '>=', now())
-    ->get();
+        ->where('status', 'available')
+        ->where('expiry_at', '>=', now())
+        ->get();
 
-    
     return view('staff.orders.index', compact(
-    'orders',
-    'customers',
-    'servicePackages',
-    'services',
-    'vouchers'
-));
+        'orders',
+        'customers',
+        'servicePackages',
+        'services',
+        'vouchers'
+    ));
 }
 
 /**

@@ -72,18 +72,13 @@ document.addEventListener('DOMContentLoaded', function () {
     |--------------------------------------------------------------------------
     */
 
-    let pagination = carousel.querySelector(
-        '.home-service-pagination'
-    );
+   let pagination = carousel
+    .closest('.home-services')
+    ?.querySelector('.home-service-pagination');
 
-    if (!pagination) {
-        pagination = document.createElement('div');
-
-        pagination.className =
-            'home-service-pagination';
-
-        carousel.appendChild(pagination);
-    }
+if (!pagination) {
+    return;
+}
 
 
     /*

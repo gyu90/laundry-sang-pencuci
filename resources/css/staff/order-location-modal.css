@@ -1,0 +1,504 @@
+/* ==========================================================
+   MODAL DETAIL PELANGGAN ORDER
+   ========================================================== */
+
+.order-location-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1400;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(15, 23, 42, 0.48);
+    backdrop-filter: blur(4px);
+}
+
+.order-location-modal.show {
+    display: flex;
+}
+
+
+/* ==========================================================
+   MODAL CONTAINER
+   ========================================================== */
+
+.order-location-modal-content {
+    width: 100%;
+    max-width: 500px;
+    max-height: calc(100vh - 40px);
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid #e3eaf3;
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px rgba(15, 23, 42, 0.20),
+        0 8px 25px rgba(15, 23, 42, 0.08);
+
+    animation: orderLocationModalShow 0.2s ease-out;
+}
+
+
+/* ==========================================================
+   ANIMATION
+   ========================================================== */
+
+@keyframes orderLocationModalShow {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* ==========================================================
+   HEADER
+   ========================================================== */
+
+.order-location-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 24px 26px 20px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #edf1f6;
+}
+
+.order-location-modal-heading {
+    min-width: 0;
+}
+
+.order-location-modal-label {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #7b8da8;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.order-location-modal-header h2 {
+    margin: 0;
+
+    color: #153d78;
+
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   CLOSE BUTTON
+   ========================================================== */
+
+.order-location-modal-close {
+    width: 36px;
+    height: 36px;
+
+    flex: 0 0 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #e0e8f2;
+    border-radius: 10px;
+
+    background: #f7f9fc;
+    color: #60738f;
+
+    font-family: inherit;
+    font-size: 21px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
+}
+
+.order-location-modal-close:hover {
+    background: #eef4fb;
+    border-color: #cddbeb;
+    color: #153d78;
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================================
+   BODY
+   ========================================================== */
+
+.order-location-modal-body {
+    padding: 24px 26px 26px;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+}
+
+
+/* ==========================================================
+   DETAIL ITEM
+   ========================================================== */
+
+.order-location-detail {
+    position: relative;
+
+    padding: 0 0 20px;
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid #edf1f6;
+}
+
+.order-location-detail:last-of-type {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+
+/* ==========================================================
+   DETAIL CONTENT
+   ========================================================== */
+
+.order-location-detail-content {
+    min-width: 0;
+}
+
+.order-location-detail-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #7c8da6;
+
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.order-location-detail-value {
+    display: block;
+
+    color: #172b4d;
+
+    font-size: 15px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+
+/* ==========================================================
+   WHATSAPP / NOMOR TELEPON
+   ========================================================== */
+
+.order-location-phone {
+    position: relative;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #2374d8;
+
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        text-decoration 0.2s ease;
+}
+
+/* EFEK LINK */
+.order-location-phone:hover {
+    color: #1456b8;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+
+/* ==========================================================
+   ALAMAT
+   ========================================================== */
+
+.order-location-address {
+    margin: 0;
+
+    color: #344d70;
+
+    font-size: 14px;
+    line-height: 1.65;
+    font-weight: 500;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================
+   GOOGLE MAPS
+   ========================================================== */
+
+.order-location-maps-wrapper {
+    margin-top: 4px;
+}
+
+.order-location-maps-button {
+    width: 100%;
+    min-height: 44px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 16px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #c8dcf5;
+    border-radius: 10px;
+
+    background: #f5f9ff;
+    color: #2878d6;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    line-height: 1.2;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.order-location-maps-button::before {
+    content: "●";
+
+    color: #2878d6;
+
+    font-size: 12px;
+}
+
+.order-location-maps-button:hover {
+    background: #edf5ff;
+    border-color: #a9c9ef;
+    color: #1456b8;
+
+    box-shadow: 0 4px 12px rgba(40, 120, 214, 0.08);
+}
+
+.order-location-maps-button:active {
+    transform: translateY(1px);
+}
+
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+
+.order-location-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding: 16px 26px;
+
+    background: #ffffff;
+
+    border-top: 1px solid #edf1f6;
+}
+
+
+/* ==========================================================
+   TOMBOL TUTUP
+   ========================================================== */
+
+.order-location-modal-footer-button {
+    min-height: 36px;
+
+    padding: 8px 16px;
+
+    border: 1px solid #d8e2ee;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #536985;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.order-location-modal-footer-button:hover {
+    background: #f5f8fc;
+    border-color: #c4d3e5;
+    color: #173d75;
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 600px) {
+
+    .order-location-modal {
+        padding: 12px;
+    }
+
+    .order-location-modal-content {
+        max-width: 100%;
+        max-height: calc(100vh - 24px);
+
+        border-radius: 16px;
+    }
+
+    .order-location-modal-header {
+        padding: 20px;
+    }
+
+    .order-location-modal-body {
+        padding: 22px 20px;
+    }
+
+    .order-location-modal-footer {
+        padding: 14px 20px;
+    }
+
+    .order-location-modal-header h2 {
+        font-size: 19px;
+    }
+
+    .order-location-detail-value {
+        font-size: 14px;
+    }
+
+    .order-location-address {
+        font-size: 13px;
+    }
+}
+
+/* ==========================================================
+   TOMBOL LIHAT LOKASI PADA ORDER
+   ========================================================== */
+
+.order-location-button {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 92px;
+    min-height: 34px;
+
+    margin-top: 7px;
+    padding: 7px 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #c9dcf3 !important;
+    border-radius: 8px;
+
+    background: #ffffff !important;
+    color: #2878d6 !important;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+
+    text-align: center;
+    text-decoration: none !important;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* ==========================================================
+   HILANGKAN ICON / TITIK
+   ========================================================== */
+
+.order-location-button::before {
+    content: none !important;
+}
+
+
+/* ==========================================================
+   HOVER
+   ========================================================== */
+
+.order-location-button:hover {
+    background: #f3f8ff !important;
+    border-color: #9fc3ec !important;
+    color: #1456b8 !important;
+
+    box-shadow: 0 3px 8px rgba(40, 120, 214, 0.10);
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================================
+   ACTIVE
+   ========================================================== */
+
+.order-location-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}

@@ -267,8 +267,43 @@
    TOMBOL AKSI STAFF
    ========================================================== */
 
+.owner-table th:last-child,
+.owner-table td:last-child {
+    text-align: center;
+}
+
 .owner-table td:last-child form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
+}
+
+.btn-staff-disable,
+.btn-staff-enable {
+    min-width: 112px;
+}
+
+
+/* ==========================================================
+   KOLOM AKSI
+   ========================================================== */
+
+.owner-table th:last-child,
+.owner-table td:last-child {
+    text-align: center;
+}
+
+.owner-table td:last-child form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.btn-staff-disable,
+.btn-staff-enable {
+    min-width: 112px;
 }
 
 .btn-staff-disable,

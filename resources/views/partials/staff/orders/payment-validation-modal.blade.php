@@ -138,22 +138,21 @@
         </div>
 
 
-        {{-- FOOTER --}}
-        <div class="payment-validation-modal-footer">
+      {{-- FOOTER --}}
+<div class="payment-validation-modal-footer">
 
-            <button
-                type="button"
-                id="cancelPaymentValidation"
-                class="order-btn order-btn-cancel"
-            >
-                Batal
-            </button>
-
-           <div class="payment-validation-modal-footer">
+    <button
+        type="button"
+        id="cancelPaymentValidation"
+        class="order-btn order-btn-cancel"
+    >
+        Batal
+    </button>
 
     <form
         id="paymentValidationForm"
         method="POST"
+        class="payment-validation-form"
     >
 
         @csrf
@@ -170,8 +169,6 @@
     </form>
 
 </div>
-
-        </div>
 
     </div>
 

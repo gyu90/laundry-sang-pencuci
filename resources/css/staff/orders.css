@@ -3,7 +3,7 @@
    ========================================================== */
 
 .order-page {
-    padding: 24px;
+    padding: 0;
 }
 
 
@@ -276,90 +276,72 @@
    ========================================== */
 
 .order-table {
-    min-width: 1120px;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
     table-layout: fixed;
 }
 
 
 /* NO */
-
 .order-table th:nth-child(1),
 .order-table td:nth-child(1) {
-    width: 5%;
+    width: 4%;
 }
-
 
 /* ORDER */
-
 .order-table th:nth-child(2),
 .order-table td:nth-child(2) {
-    width: 10%;
-}
-
-
-/* CUSTOMER */
-
-.order-table th:nth-child(3),
-.order-table td:nth-child(3) {
-    width: 11%;
-}
-
-
-/* LAYANAN */
-
-.order-table th:nth-child(4),
-.order-table td:nth-child(4) {
-    width: 16%;
-}
-
-
-/* TOTAL */
-
-.order-table th:nth-child(5),
-.order-table td:nth-child(5) {
     width: 9%;
 }
 
-
-/* PEMBAYARAN */
-
-.order-table th:nth-child(6),
-.order-table td:nth-child(6) {
+/* CUSTOMER */
+.order-table th:nth-child(3),
+.order-table td:nth-child(3) {
     width: 12%;
 }
 
+/* LAYANAN */
+.order-table th:nth-child(4),
+.order-table td:nth-child(4) {
+    width: 17%;
+}
 
-/* STATUS */
-
-.order-table th:nth-child(7),
-.order-table td:nth-child(7) {
+/* TOTAL */
+.order-table th:nth-child(5),
+.order-table td:nth-child(5) {
     width: 10%;
 }
 
+/* PEMBAYARAN */
+.order-table th:nth-child(6),
+.order-table td:nth-child(6) {
+    width: 13%;
+}
+
+/* STATUS */
+.order-table th:nth-child(7),
+.order-table td:nth-child(7) {
+    width: 12%;
+}
 
 /* PERMINTAAN */
-
 .order-table th:nth-child(8),
 .order-table td:nth-child(8) {
-    width: 11%;
+    width: 8%;
 }
-
 
 /* DITERIMA OLEH */
-
 .order-table th:nth-child(9),
 .order-table td:nth-child(9) {
-    width: 6%;
+    width: 7%;
 }
 
-
 /* AKSI */
-
 .order-table th:nth-child(10),
 .order-table td:nth-child(10) {
     width: 10%;
 }
-
 /* ==========================================
    KONTEN TABEL
    ========================================== */
@@ -398,16 +380,16 @@
 }
 
 .order-status-select {
-    width: 126px;
+    width: 100%;
+    max-width: 120px;
     height: 38px;
 
-    padding: 0 10px;
+    padding: 0 8px;
 
     border: 1px solid #d8e4f3;
     border-radius: 9px;
 
     background: #ffffff;
-
     color: #1456b8;
 
     font-family: inherit;
@@ -418,6 +400,31 @@
     cursor: pointer;
 
     box-sizing: border-box;
+}
+
+
+.order-table td:nth-child(7) {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.order-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 30px;
+    padding: 5px 10px;
+
+    max-width: 100%;
+    box-sizing: border-box;
+
+    border-radius: 8px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
 }
 
 .order-status-select:hover {
@@ -435,14 +442,16 @@
 /* HEADER TABEL */
 
 .order-table th {
-    padding: 14px 16px;
+    padding: 11px 6px;
 
     text-align: left;
 
     font-size: 12px;
     font-weight: 700;
 
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
+    line-height: 1.3;
 
     color: #52688f;
 
@@ -452,18 +461,78 @@
 }
 
 
-/* ISI TABEL */
+
 
 .order-table td {
-    padding: 17px 16px;
-
+    padding: 13px 6px;
     vertical-align: middle;
 
     color: #334d78;
-
     background: #ffffff;
 
     border-bottom: 1px solid #edf2f8;
+
+    font-size: 14px;
+    line-height: 1.35;
+
+    min-width: 0;
+}
+
+.order-table th:nth-child(8),
+.order-table th:nth-child(9),
+.order-table th:nth-child(10) {
+    text-align: center;
+}
+
+.order-table td:nth-child(8),
+.order-table td:nth-child(9),
+.order-table td:nth-child(10) {
+    text-align: center;
+}
+
+.order-table td:nth-child(4) {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.order-table td:nth-child(3) {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* ISI TABEL */
+
+.order-table th {
+    padding: 11px 6px;
+
+    text-align: left;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: normal;
+    line-height: 1.25;
+
+    color: #52688f;
+    background: #f8fbff;
+
+    border-bottom: 1px solid #e4ebf5;
+}
+
+.order-table td:nth-child(2) {
+    white-space: nowrap;
+}
+
+.order-table td:nth-child(5) {
+    white-space: nowrap;
+}
+
+.order-table td:nth-child(6),
+.order-table td:nth-child(7),
+.order-table td:nth-child(10) {
+    white-space: nowrap;
 }
 
 
@@ -688,31 +757,29 @@
    ========================================== */
 
 .order-status-select {
-    width: 140px;
-    height: 38px;
+    width: 100%;
+    max-width: 120px;
+    min-width: 0;
+    height: 36px;
 
-    padding: 0 12px;
+    padding: 0 5px;
 
     border: 1px solid #d8e4f3;
     border-radius: 9px;
 
     background: #ffffff;
-
     color: #1456b8;
 
     font-family: inherit;
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 600;
 
     outline: none;
-
     cursor: pointer;
 
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background-color 0.2s ease;
+    box-sizing: border-box;
 }
+
 
 .order-status-select:hover {
     background: #f8fbff;
@@ -803,6 +870,14 @@
     color: #16834b;
 }
 
+/* SELESAI */
+
+.order-status-completed {
+    background: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
 
 /* ==========================================================
    AKSI
@@ -838,11 +913,95 @@
     color: #6b7280;
 }
 
+/* ==========================================================
+   HASIL PENCARIAN ORDER TIDAK DITEMUKAN
+   ========================================================== */
+
+.order-search-no-result {
+    padding: 40px 24px;
+
+    text-align: center;
+
+    color: #6b7280;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    background: #ffffff;
+}
+
+.order-search-no-result strong {
+    color: #102a72;
+    font-weight: 600;
+}
+
 
 /* ==========================================================
    RESPONSIVE
    ========================================================== */
 
+@media (max-width: 1600px) {
+
+    /* NO */
+    .order-table th:nth-child(1),
+    .order-table td:nth-child(1) {
+        width: 4%;
+    }
+
+    /* ORDER */
+    .order-table th:nth-child(2),
+    .order-table td:nth-child(2) {
+        width: 10%;
+    }
+
+    /* CUSTOMER */
+    .order-table th:nth-child(3),
+    .order-table td:nth-child(3) {
+        width: 12%;
+    }
+
+    /* LAYANAN */
+    .order-table th:nth-child(4),
+    .order-table td:nth-child(4) {
+        width: 13%;
+    }
+
+    /* TOTAL */
+    .order-table th:nth-child(5),
+    .order-table td:nth-child(5) {
+        width: 9%;
+    }
+
+    /* PEMBAYARAN */
+    .order-table th:nth-child(6),
+    .order-table td:nth-child(6) {
+        width: 12%;
+    }
+
+    /* STATUS */
+    .order-table th:nth-child(7),
+    .order-table td:nth-child(7) {
+    width: 12%;
+}
+
+    /* PERMINTAAN */
+    .order-table th:nth-child(8),
+    .order-table td:nth-child(8) {
+        width: 9%;
+    }
+
+    /* DITERIMA OLEH */
+    .order-table th:nth-child(9),
+    .order-table td:nth-child(9) {
+        width: 9%;
+    }
+
+    /* AKSI */
+    .order-table th:nth-child(10),
+    .order-table td:nth-child(10) {
+        width: 12%;
+    }
+}
 @media (max-width: 900px) {
 
     .order-page {
@@ -854,9 +1013,9 @@
     }
 
     .order-table {
-        min-width: 900px;
+        min-width: 0;
+        width: 100%;
     }
-
 }
 
 /* ==========================================================
@@ -896,7 +1055,8 @@
 
 .order-modal {
     width: 100%;
-    max-width: 620px;
+    max-width: 540px;
+    max-height: calc(100vh - 40px);
 
     display: flex;
     flex-direction: column;
@@ -907,8 +1067,6 @@
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
 
     overflow: hidden;
-
-    zoom: 0.82;
 }
 
 
@@ -922,7 +1080,7 @@
     align-items: center;
     justify-content: space-between;
 
-    padding: 22px 24px;
+    padding: 18px 20px;
 
     background: #ffffff;
 
@@ -993,10 +1151,11 @@
    ========================================================== */
 
 .order-modal-body {
-    padding: 24px;
+    padding: 20px;
     flex: 1;
     min-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 
@@ -1208,301 +1367,7 @@
     line-height: 1.4;
 }
 
-/* ==========================================================
-   TAMBAH LAYANAN
-   ========================================================== */
 
-.order-add-service {
-    display: inline-flex;
-
-    align-items: center;
-
-    margin-top: 8px;
-
-    border: none;
-    background: transparent;
-
-    padding: 0;
-
-    font-size: 14px;
-    font-weight: 500;
-
-    color: #111827;
-
-    cursor: pointer;
-}
-
-.order-add-service:hover {
-    text-decoration: underline;
-}
-
-
-/* ==========================================================
-   DAFTAR LAYANAN
-   ========================================================== */
-
-.order-service-list {
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-    margin-top: 10px;
-
-    max-height: 88px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    padding-right: 4px;
-    box-sizing: border-box;
-}
-
-/* ==========================================
-   ITEM LAYANAN
-   ========================================== */
-
-.order-service-row {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1.15fr;
-
-    gap: 10px 12px;
-
-    padding: 12px;
-
-    border: 1px solid #d8e3f5;
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    box-sizing: border-box;
-
-    flex-shrink: 0;
-}
-
-.order-service-row .service-field label,
-.order-service-row .service-quantity-group label {
-    display: none;
-}
-
-
-/* ==========================================
-   FIELD LAYANAN & PAKET
-   ========================================== */
-
-.order-service-row .service-field {
-    width: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-
-.order-service-row .service-field label,
-.order-service-row .service-quantity-group label {
-    margin: 0;
-
-    font-size: 11px;
-    font-weight: 600;
-
-    color: #7182a0;
-}
-
-
-.order-service-row .service-field select {
-    width: 100%;
-    height: 38px;
-
-    padding: 0 12px;
-
-    border: 1px solid #d4dfef;
-    border-radius: 9px;
-
-    background: #ffffff;
-
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 500;
-
-    color: #263b63;
-
-    outline: none;
-
-    box-sizing: border-box;
-
-    cursor: pointer;
-}
-
-
-.order-service-row .service-field select:focus {
-    border-color: #5d87d9;
-
-    box-shadow:
-        0 0 0 3px rgba(93, 135, 217, 0.10);
-}
-
-
-.order-service-row .service-field select:disabled {
-    background: #f6f8fc;
-    color: #9aa8bf;
-}
-
-
-/* ==========================================
-   BARIS BAWAH
-   ========================================== */
-
-.order-service-row .service-bottom-row {
-    grid-column: 1 / -1;
-
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 12px;
-}
-
-
-/* ==========================================
-   QUANTITY
-   ========================================== */
-
-.order-service-row .service-quantity-group {
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-
-.order-service-row .quantity-control {
-    display: inline-flex;
-    align-items: center;
-
-    height: 36px;
-
-    border: 1px solid #d4dfef;
-    border-radius: 9px;
-
-    background: #ffffff;
-
-    overflow: hidden;
-}
-
-
-.order-service-row .quantity-btn {
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0;
-
-    border: none;
-
-    background: #f3f7ff;
-
-    color: #1456b8;
-
-    font-family: inherit;
-    font-size: 18px;
-    font-weight: 600;
-
-    line-height: 1;
-
-    cursor: pointer;
-}
-
-
-.order-service-row .quantity-btn:hover {
-    background: #e7f0ff;
-}
-
-
-.order-service-row .service-quantity-input {
-    width: 40px;
-    height: 34px;
-
-    padding: 0;
-
-    border: none;
-    border-left: 1px solid #d4dfef;
-    border-right: 1px solid #d4dfef;
-
-    background: #ffffff;
-
-    text-align: center;
-
-    font-family: inherit;
-    font-size: 13px;
-    font-weight: 600;
-
-    color: #17366f;
-
-    outline: none;
-}
-
-
-.order-service-row .service-quantity-input::-webkit-inner-spin-button,
-.order-service-row .service-quantity-input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-
-.order-service-row .service-quantity-input {
-    appearance: textfield;
-}
-
-
-/* ==========================================
-   TOMBOL HAPUS
-   ========================================== */
-
-.order-service-row .order-remove-service {
-    height: 36px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0 12px;
-
-    border: 1px solid #efc2da;
-    border-radius: 9px;
-
-    background: #fff6fb;
-
-    color: #b21f75;
-
-    font-family: inherit;
-    font-size: 12px;
-    font-weight: 600;
-
-    white-space: nowrap;
-
-    cursor: pointer;
-
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
-}
-
-
-.order-service-row .order-remove-service:hover {
-    background: #fce8f2;
-    border-color: #df9fc0;
-    color: #99145f;
-}
 /* ==========================================================
    VOUCHER
    ========================================================== */
@@ -1559,14 +1424,10 @@
 
 .order-modal-footer {
     display: flex;
-
     justify-content: flex-end;
     align-items: center;
-
     gap: 10px;
-
-    padding: 18px 24px;
-
+    padding: 16px 20px;
     border-top: 1px solid #e5e7eb;
 }
 
@@ -1636,35 +1497,19 @@
 @media (max-width: 600px) {
 
     .order-modal {
-    width: 100%;
-    max-width: 500px;
-    max-height: calc(100vh - 32px);
+        width: 100%;
+        max-width: 500px;
+        max-height: calc(100vh - 24px);
     }
 
-    .order-service-item {
-        grid-template-columns: 1fr;
+    .order-modal-body {
+        padding: 18px;
     }
 
-
-    .order-modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.5);
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    z-index: 9999;
+    .order-modal-footer {
+        padding: 16px 18px;
+    }
 }
-
-.order-modal-overlay.show {
-    display: flex;
-}
-
-}
-
 /* ==========================================
    MODAL KONFIRMASI STATUS
 ========================================== */
@@ -2047,127 +1892,6 @@
     object-fit: contain;
 
     pointer-events: none;
-}
-
-/* ==========================================
-   SERVICE SECTION
-   ========================================== */
-
-.order-service-section {
-    margin-bottom: 16px;
-    padding: 18px;
-
-    background: #eef5ff;
-
-    border: 1px solid #dce8fb;
-    border-radius: 14px;
-
-    box-sizing: border-box;
-}
-
-
-/* HEADER LAYANAN */
-
-.order-service-section .order-section-header {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    margin-bottom: 14px;
-}
-
-
-/* ICON LAYANAN */
-
-.order-service-section .order-section-icon {
-    width: 36px;
-    height: 36px;
-
-    flex: 0 0 36px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 10px;
-
-    background: #dcecff;
-
-    overflow: hidden;
-}
-
-
-.order-service-section .order-section-icon img {
-    width: 22px;
-    height: 22px;
-
-    display: block;
-
-    object-fit: contain;
-}
-
-
-/* JUDUL LAYANAN */
-
-.order-service-section .order-section-header h3 {
-    margin: 0;
-
-    font-size: 17px;
-    line-height: 1.2;
-    font-weight: 700;
-
-    color: #102a72;
-}
-
-/* ==========================================
-   TOMBOL TAMBAH LAYANAN
-   ========================================== */
-
-.order-service-section .order-add-service {
-    width: 100%;
-    min-height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    margin-top: 12px;
-
-    padding: 10px 14px;
-
-    border: 1px dashed #74a9e8;
-    border-radius: 11px;
-
-    background: #e5f3ff;
-
-    color: #0758b8;
-
-    font-size: 14px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    box-sizing: border-box;
-
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease;
-}
-
-
-.order-service-section .order-add-service:hover {
-    background: #d9edff;
-    border-color: #518fd6;
-}
-
-
-.order-service-section .order-add-service-plus {
-    font-size: 21px;
-    line-height: 1;
-    font-weight: 400;
 }
 
 /* ==========================================
@@ -3095,4 +2819,37 @@
 .order-request-empty {
     color: #94a3b8;
     font-size: 13px;
+}
+
+/* ==========================================================
+   FIX FOOTER MODAL VALIDASI PEMBAYARAN
+   ========================================================== */
+
+.payment-validation-modal-footer {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.payment-validation-modal-footer > .order-btn {
+    width: auto !important;
+    flex: 0 0 auto !important;
+}
+
+.payment-validation-modal-footer > .payment-validation-form {
+    display: block !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: 0 0 auto !important;
+}
+
+.payment-validation-modal-footer .payment-validation-form .order-btn {
+    width: auto !important;
+    flex: 0 0 auto !important;
 }

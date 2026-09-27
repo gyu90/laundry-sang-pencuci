@@ -22,7 +22,7 @@
             class="customer-logo-link"
         >
             <img
-                src="{{ asset('images/logo.png') }}"
+                src="{{ asset('images/logo2.png') }}"
                 alt="Sang Pencuci"
                 class="customer-logo"
             >
@@ -61,38 +61,76 @@
         </nav>
 
 
-        {{-- HEADER ACTION --}}
-        <div class="customer-header-action">
+      {{-- HEADER ACTION --}}
+<div class="customer-header-action">
 
-            @guest
+    @guest
 
-                {{-- GUEST --}}
-                <a
-                    href="{{ route('login') }}"
-                    class="customer-login-button"
+        {{-- GUEST --}}
+        <a
+            href="{{ route('login') }}"
+            class="customer-login-button"
+        >
+            Masuk
+        </a>
+
+    @else
+
+        @if(auth()->user()->user_type === 'customer')
+
+            {{-- MOBILE SAJA --}}
+            <a
+                href="{{ url('/akun') }}"
+                class="customer-mobile-account"
+                aria-label="Akun Saya"
+            >
+                👤
+            </a>
+
+            {{-- LOGOUT CUSTOMER --}}
+            <form
+                method="POST"
+                action="{{ route('logout') }}"
+                class="customer-logout-form"
+            >
+                @csrf
+
+                <button
+                    type="submit"
+                    class="customer-logout-button"
                 >
-                    Masuk
-                </a>
+                    Keluar
+                </button>
+            </form>
 
-            @else
+       @elseif(
+    auth()->user()->user_type === 'staff'
+    && auth()->user()->staff?->role === 'staff'
+)
 
-                @if(auth()->user()->user_type === 'customer')
+    {{-- KEMBALI KE DASHBOARD STAFF --}}
+    <a
+        href="{{ route('staff.dashboard') }}"
+        class="customer-logout-button"
+    >
+        Kembali ke Dashboard
+    </a>
 
-                    {{-- MOBILE SAJA --}}
-                    <a
-                        href="{{ url('/akun') }}"
-                        class="customer-mobile-account"
-                        aria-label="Akun Saya"
-                    >
-                        👤
-                    </a>
+@elseif(
+    auth()->user()->user_type === 'staff'
+    && auth()->user()->staff?->role === 'owner'
+)
 
-                @endif
+    {{-- KEMBALI KE DASHBOARD OWNER --}}
+    <a
+        href="{{ route('owner.dashboard') }}"
+        class="customer-logout-button"
+    >
+        Kembali ke Dashboard
+    </a>
+        @endif
 
-            @endguest
+    @endguest
 
-        </div>
-
-    </div>
-
+</div>
 </header>

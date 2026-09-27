@@ -5,6 +5,10 @@
 ])
 @section('content')
 
+<div style="position: fixed; top: 10px; left: 10px; z-index: 9999; background: red; color: white; padding: 10px;">
+    user_type: {{ auth()->user()->user_type ?? 'guest' }}
+</div>
+
 {{-- ==========================================
     HERO SECTION
 ========================================== --}}
@@ -12,46 +16,46 @@
 
     <div class="customer-hero-content">
 
-        <div class="hero-text">
+      <div class="hero-text">
 
-            @auth
-                <span class="hero-greeting">
-                    Halo, {{ auth()->user()->username }} 👋
-                </span>
-            @else
-                <span class="hero-badge">
-                    ✦ Laundry lebih praktis
-                </span>
-            @endauth
+    {{-- SAPAAN --}}
+@if(auth()->check() && auth()->user()->user_type === 'customer')
+    <span class="home-hero-greeting">
+        Halo, {{ auth()->user()->customer?->name ?? auth()->user()->username }} 👋
+    </span>
+@else
+    <span class="home-eyebrow">
+        SANG PENCUCI
+    </span>
+@endif
 
-            <h1>
-                Nyuci itu berat,
-                <span>biar kami saja.</span>
-            </h1>
+    <h1>
+        Nyuci itu berat,
+        <span>biar kami saja.</span>
+    </h1>
 
-            <p>
-                Percayakan pakaian kotor kamu kepada
-                <strong>Sang Pencuci</strong>.
-                Bersih, rapi, dan siap dipakai kembali.
-            </p>
+    <p>
+        Percayakan pakaian kotor kamu kepada
+        <strong>Sang Pencuci</strong>.
+        Bersih, rapi, dan siap dipakai kembali.
+    </p>
 
-            <div class="hero-actions">
+    <div class="hero-actions">
 
-                <a href="#layanan" class="hero-primary-button">
-                    Lihat Layanan
-                </a>
+        <a href="#layanan" class="hero-primary-button">
+            Lihat Layanan
+        </a>
 
-                @guest
-                    <a href="{{ route('login') }}" class="hero-secondary-button">
-                        Masuk
-                    </a>
-                @endguest
+        {{-- TOMBOL MASUK --}}
+        @if(!auth()->check() || auth()->user()->user_type !== 'customer')
+    <a href="{{ route('login') }}" class="hero-secondary-button">
+        Masuk
+    </a>
+@endif
 
-            </div>
+    </div>
 
-        </div>
-
-
+</div>
         {{-- ILUSTRASI MESIN CUCI --}}
         <div class="hero-visual">
 
@@ -129,7 +133,7 @@
 {{-- ==========================================
     ACTIVE ORDER
 ========================================== --}}
-@auth
+@if(auth()->check() && auth()->user()->user_type === 'customer')
 
     @if(isset($activeOrder) && $activeOrder)
 
@@ -202,9 +206,9 @@
 
         </section>
 
-    @endif
+        @endif
 
-@endauth
+@endif
 
 
 {{-- ==========================================
@@ -371,19 +375,19 @@
             kami yang mencuci.
         </p>
 
-        @guest
+      @if(!auth()->check() || auth()->user()->user_type !== 'customer')
 
-            <a href="{{ route('login') }}" class="cta-button">
-                Mulai Sekarang
-            </a>
+    <a href="{{ route('login') }}" class="cta-button">
+        Mulai Sekarang
+    </a>
 
-        @else
+@else
 
-            <a href="#layanan" class="cta-button">
-                Lihat Layanan
-            </a>
+    <a href="#layanan" class="cta-button">
+        Lihat Layanan
+    </a>
 
-        @endguest
+@endif
 
     </div>
 

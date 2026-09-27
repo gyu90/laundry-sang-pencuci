@@ -52,7 +52,7 @@
             {{-- BODY --}}
             <div class="order-modal-body">
 
-                {{-- CUSTOMER --}}
+              {{-- CUSTOMER --}}
 <div class="order-customer-section">
 
     <div class="order-section-header">
@@ -126,8 +126,17 @@
 
     </div>
 
-</div>
 
+    {{-- ERROR CUSTOMER --}}
+    <div
+        id="customerError"
+        class="order-field-error"
+        style="display: none;"
+    >
+        Customer wajib dipilih.
+    </div>
+
+</div>
 {{-- LAYANAN --}}
 <div class="order-service-section">
 
@@ -146,12 +155,21 @@
 
 
     {{-- Daftar layanan dibuat oleh JavaScript --}}
-    <div
-        id="orderServiceList"
-        class="order-service-list"
-        data-services='@json($services)'
-    >
-    </div>
+<div
+    id="orderServiceList"
+    class="order-service-list"
+    data-services='@json($services)'
+>
+</div>
+
+{{-- ERROR LAYANAN --}}
+<div
+    id="serviceError"
+    class="order-field-error"
+    style="display: none;"
+>
+    Minimal pilih satu layanan.
+</div>
 
 
     <button

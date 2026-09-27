@@ -15,6 +15,19 @@
 
     <nav class="sidebar-menu">
 
+
+
+    {{-- Home --}}
+<a href="{{ route('customer.home') }}"
+   class="menu-item {{ request()->routeIs('customer.home') ? 'active' : '' }}">
+
+    <span class="menu-icon">⌂</span>
+
+    <span>Home</span>
+
+</a>
+
+
         {{-- Dashboard --}}
         <a href="{{ route('staff.dashboard') }}"
            class="menu-item {{ request()->routeIs('staff.dashboard') ? 'active' : '' }}">

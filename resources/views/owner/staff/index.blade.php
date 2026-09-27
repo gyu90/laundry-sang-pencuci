@@ -105,9 +105,10 @@
                             <td>
 
     <form
-        method="POST"
-        action="{{ route('owner.staff.toggleStatus', $staff) }}"
-    >
+    method="POST"
+    action="{{ route('owner.staff.toggleStatus', $staff) }}"
+    class="staff-status-form"
+>
 
         @csrf
         @method('PATCH')
@@ -369,6 +370,9 @@
     </div>
 
 </div>
+{{-- Modal Konfirmasi Status Staff --}}
+@include('owner.staff.status-confirmation')
+
 @push('scripts')
     @vite('resources/js/owner/staff/staff.js')
 @endpush

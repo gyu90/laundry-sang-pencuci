@@ -7,7 +7,12 @@
    ========================================================== */
 
 .customer-page {
-    padding: 24px;
+    width: calc(100% + 48px);
+    box-sizing: border-box;
+
+    margin-left: -24px;
+
+    padding: 18px 12px 24px;
 }
 
 
@@ -90,6 +95,7 @@
 
 .customer-card {
     width: 100%;
+    box-sizing: border-box;
 
     background: #ffffff;
 
@@ -153,11 +159,13 @@
 
 .customer-table {
     width: 100%;
-    min-width: 900px;
+    min-width: 0;
 
     border-collapse: collapse;
 
-    font-size: 13px;
+    table-layout: auto;
+
+    font-size: 12px;
 }
 
 
@@ -170,7 +178,7 @@
 }
 
 .customer-table th {
-    padding: 14px 16px;
+    padding: 11px 9px;
 
     text-align: left;
     white-space: nowrap;
@@ -179,17 +187,16 @@
 
     color: #49628a;
 
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
 }
-
 
 /* ==========================================================
    TABLE BODY
    ========================================================== */
 
 .customer-table td {
-    padding: 15px 16px;
+    padding: 11px 9px;
 
     border-bottom: 1px solid #edf1f6;
 
@@ -197,8 +204,10 @@
 
     color: #52627a;
 
-    font-size: 13px;
+    font-size: 12px;
 }
+
+
 
 .customer-table tbody tr {
     transition: background-color 0.15s ease;
@@ -1003,3 +1012,265 @@
     font-size: 14px;
 }
 
+
+/* ==========================================================
+   TOMBOL DETAIL CUSTOMER
+   ========================================================== */
+
+.customer-detail-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 68px;
+    height: 38px;
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #c9dcf3;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: #1769d1;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* HOVER */
+.customer-detail-button:hover {
+    background: #f5f9ff;
+    border-color: #a9c9ef;
+    color: #1456b8;
+
+    box-shadow: 0 2px 7px rgba(40, 120, 214, 0.08);
+}
+
+
+/* ACTIVE */
+.customer-detail-button:active {
+    transform: translateY(1px);
+    box-shadow: none;
+}
+
+/* ==========================================================
+   TOMBOL AKSI CUSTOMER
+   ========================================================== */
+
+.customer-action-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.customer-detail-button,
+.customer-edit-button {
+    width: 64px;
+    min-height: 36px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    border-radius: 9px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Detail */
+.customer-detail-button {
+    text-decoration: none;
+}
+
+/* Edit */
+.customer-edit-button {
+    cursor: pointer;
+}
+
+
+/* ==========================================================
+   CUSTOMER SEARCH
+   ========================================================== */
+
+.customer-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+
+/* Form pencarian */
+.customer-search-form {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+
+/* Wrapper input + icon */
+.customer-search-wrapper {
+    position: relative;
+    width: 320px;
+}
+
+
+/* Icon pencarian */
+.customer-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 15px;
+    line-height: 1;
+
+    pointer-events: none;
+}
+
+
+/* Input pencarian */
+.customer-search-input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 15px 0 40px;
+
+    border: 1px solid #d9e2f0;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    color: #243b64;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+/* Placeholder */
+.customer-search-input::placeholder {
+    color: #9aa8bd;
+}
+
+
+/* Saat input aktif */
+.customer-search-input:focus {
+    border-color: #1769d5;
+
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 768px) {
+
+    .customer-card-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+    .customer-search-form {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .customer-search-wrapper {
+        width: 100%;
+    }
+
+}
+/* ==========================================================
+   SEARCH CUSTOMER
+   ========================================================== */
+
+.customer-search-form {
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.customer-search-wrapper {
+    position: relative;
+    width: 320px;
+}
+
+.customer-search-icon {
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    width: 17px;
+    height: 17px;
+
+    transform: translateY(-50%);
+
+    object-fit: contain;
+
+    pointer-events: none;
+}
+
+.customer-search-input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 15px 0 42px;
+
+    border: 1px solid #d9e2f0;
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+    color: #243b64;
+
+    outline: none;
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.customer-search-input::placeholder {
+    color: #9aa8bd;
+}
+
+.customer-search-input:focus {
+    border-color: #1769d5;
+
+    box-shadow: 0 0 0 3px rgba(23, 105, 213, 0.10);
+}

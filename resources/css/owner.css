@@ -150,6 +150,8 @@ body {
 .main-content {
     margin-left: 240px;
     width: calc(100% - 240px);
+    max-width: calc(100% - 240px);
+    min-width: 0;
     padding: 28px 32px;
 }
 
@@ -222,14 +224,14 @@ body {
 ========================= */
 
 @media (max-width: 900px) {
-
-.sidebar {
-    width: 250px;
-}
+    .sidebar {
+        width: 220px;
+    }
 
     .main-content {
-        margin-left: 200px;
-        width: calc(100% - 200px);
+        margin-left: 220px;
+        width: calc(100% - 220px);
+        max-width: calc(100% - 220px);
         padding: 22px;
     }
 }
@@ -259,9 +261,29 @@ body {
 
 .owner-summary {
     display: grid;
-    grid-template-columns: 1.35fr repeat(4, 1fr);
+    grid-template-columns: minmax(0, 1.35fr) repeat(4, minmax(0, 1fr));
     gap: 12px;
     margin-bottom: 32px;
+    width: 100%;
+    min-width: 0;
+}
+
+@media (max-width: 1200px) {
+    .owner-summary {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .owner-summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    .owner-summary {
+        grid-template-columns: 1fr;
+    }
 }
 
 .owner-income-card,
